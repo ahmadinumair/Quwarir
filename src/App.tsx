@@ -10,6 +10,7 @@ import { HeroSection } from "./components/HeroSection";
 import { ArchitecturalInterlude } from "./components/ArchitecturalInterlude";
 import { AboutSection } from "./components/AboutSection";
 import { ServicesSection } from "./components/ServicesSection";
+import { ZakatAndProfitCalculator } from "./components/ZakatAndProfitCalculator";
 import { MarketsSection } from "./components/MarketsSection";
 import { EcosystemAndAISection } from "./components/EcosystemAndAISection";
 import { VisionValuesSection } from "./components/VisionValuesSection";
@@ -30,6 +31,7 @@ export default function App() {
           <ArchitecturalInterlude />
           <AboutSection />
           <ServicesSection />
+          <ZakatAndProfitCalculator />
           <MarketsSection />
           <EcosystemAndAISection />
           <VisionValuesSection />

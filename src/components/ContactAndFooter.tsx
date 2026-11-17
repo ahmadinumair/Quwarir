@@ -394,6 +394,11 @@ export function ContactAndFooter() {
                   </a>
                 </li>
                 <li>
+                  <a href="#calculator" className="hover:text-[#8EB69B] transition-colors">
+                    Zakat &amp; Calculator
+                  </a>
+                </li>
+                <li>
                   <a href="#markets" className="hover:text-[#8EB69B] transition-colors">
                     Markets
                   </a>
