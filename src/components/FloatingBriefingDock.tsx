@@ -97,14 +97,14 @@ export function FloatingBriefingDock() {
         exit={{ opacity: 0, y: 12 }}
         transition={{ duration: 0.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
         aria-label="Executive Audio Briefing Player"
-        className="hidden lg:flex fixed bottom-6 left-6 z-40 w-56 flex-col bg-[#102D25]/95 backdrop-blur-md text-[#F4F0E5] border border-[#C6A96B]/35 p-4 shadow-2xl"
+        className="hidden lg:flex fixed bottom-6 left-6 z-40 w-56 flex-col rounded-2xl bg-[#0B2B26]/95 backdrop-blur-md text-[#DAF1DE] border border-[#8EB69B]/30 p-4 shadow-2xl"
       >
         <div className="flex items-start justify-between gap-2 mb-3">
           <div>
-            <p className="font-mono text-xs text-[#C6A96B] tabular-nums leading-none mb-1">
+            <p className="font-mono text-xs text-[#8EB69B] tabular-nums leading-none mb-1">
               {formatTime(elapsed)}
             </p>
-            <p className="text-[11px] font-medium text-[#F4F0E5]/90 leading-tight">
+            <p className="text-[11px] font-medium text-[#DAF1DE] leading-tight">
               QUWARIR Executive Brief
             </p>
           </div>
@@ -114,17 +114,17 @@ export function FloatingBriefingDock() {
               if (audioRef.current) audioRef.current.pause();
               setDismissed(true);
             }}
-            className="text-[#F4F0E5]/50 hover:text-[#C6A96B] transition-colors p-0.5"
+            className="text-[#8EB69B]/70 hover:text-[#DAF1DE] transition-colors p-0.5"
             aria-label="Dismiss audio briefing dock"
           >
             <X className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* Harmonic Waveform Visualizer (inspired by 00:10 audio dock) */}
+        {/* Harmonic Waveform Visualizer */}
         <div
           aria-hidden="true"
-          className="h-8 flex items-center justify-between gap-1 px-1 mb-3 border-y border-white/10"
+          className="h-8 flex items-center justify-between gap-1 px-1 mb-3 border-y border-[#8EB69B]/20"
         >
           {[0.3, 0.7, 0.45, 0.9, 0.55, 1, 0.6, 0.85, 0.4, 0.75, 0.5, 0.35].map(
             (base, idx) => (
@@ -145,19 +145,19 @@ export function FloatingBriefingDock() {
                       }
                     : { duration: 0.2 }
                 }
-                className="w-0.5 h-5 bg-[#C6A96B]/85 origin-center"
+                className="w-0.5 h-5 bg-[#8EB69B] origin-center"
               />
             )
           )}
         </div>
 
         {error ? (
-          <p className="text-[10px] text-[#C6A96B] mb-2">{error}</p>
+          <p className="text-[10px] text-[#DAF1DE] mb-2">{error}</p>
         ) : null}
 
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-[#E8EBE7]/65">
-            <Volume2 className="w-3 h-3 text-[#C6A96B]" />
+          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-[#8EB69B]">
+            <Volume2 className="w-3 h-3 text-[#DAF1DE]" />
             <span>Voice Brief</span>
           </span>
 
@@ -165,7 +165,7 @@ export function FloatingBriefingDock() {
             type="button"
             onClick={handleTogglePlay}
             disabled={loading}
-            className="inline-flex items-center justify-center w-8 h-8 bg-[#C6A96B] text-[#102D25] hover:bg-[#d6bc82] transition-colors disabled:opacity-60"
+            className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#DAF1DE] text-[#051F20] hover:bg-[#FFFFFF] transition-colors disabled:opacity-60"
             aria-label={playing ? "Pause executive briefing" : "Play executive briefing"}
           >
             {loading ? (

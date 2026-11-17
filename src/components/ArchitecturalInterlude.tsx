@@ -60,9 +60,9 @@ export function ArchitecturalInterlude() {
       if (sealRef.current) {
         gsap.fromTo(
           sealRef.current,
-          { rotate: -25, scale: 0.94 },
+          { rotate: -20, scale: 0.94 },
           {
-            rotate: 25,
+            rotate: 20,
             scale: 1,
             ease: "none",
             scrollTrigger: {
@@ -92,33 +92,33 @@ export function ArchitecturalInterlude() {
     <section
       ref={containerRef}
       aria-label="QUWARIR Architectural Manifesto"
-      className="relative bg-[#FFFFFF] text-[#102D25] py-24 lg:py-32 border-b border-[#102D25]/10 overflow-hidden"
+      className="relative bg-[#0B2B26] text-[#DAF1DE] py-20 lg:py-28 border-b border-[#8EB69B]/15 overflow-hidden"
     >
       {/* Continuous 4-Column Architectural Hairline Grid */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-2 lg:grid-cols-4"
       >
-        <div className="border-l border-[#102D25]/8 h-full" />
-        <div className="border-l border-[#102D25]/8 h-full" />
-        <div className="hidden lg:block border-l border-[#102D25]/8 h-full" />
-        <div className="hidden lg:block border-l border-r border-[#102D25]/8 h-full" />
+        <div className="border-l border-[#8EB69B]/10 h-full" />
+        <div className="border-l border-[#8EB69B]/10 h-full" />
+        <div className="hidden lg:block border-l border-[#8EB69B]/10 h-full" />
+        <div className="hidden lg:block border-l border-r border-[#8EB69B]/10 h-full" />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center">
-          <p className="font-serif italic text-sm sm:text-base text-[#103B2F]/80 mb-10">
+          <p className="font-serif italic text-sm sm:text-base text-[#8EB69B] mb-10">
             (The Principle of Purposeful Capital)
           </p>
 
-          {/* Split Monumental Statement + Clean Centered QUWARIR Emblem */}
+          {/* Split Monumental Statement + Clean Centered Hexagonal QUWARIR Emblem */}
           <div className="relative w-full py-6 lg:py-12 flex flex-col items-center justify-center">
             {/* Clean Concentric Geometric Frame & Centered Seal (no circling text) */}
             <div className="relative w-44 h-44 sm:w-48 sm:h-48 flex items-center justify-center mb-10 lg:mb-0 lg:absolute lg:inset-0 lg:m-auto pointer-events-none">
               <svg
                 ref={ringsRef}
                 viewBox="0 0 240 240"
-                className="w-full h-full opacity-55"
+                className="w-full h-full opacity-45"
                 aria-hidden="true"
               >
                 <circle
@@ -126,7 +126,7 @@ export function ArchitecturalInterlude() {
                   cy="120"
                   r="112"
                   fill="none"
-                  stroke="#C6A96B"
+                  stroke="#8EB69B"
                   strokeWidth="0.75"
                   strokeDasharray="3 8"
                 />
@@ -135,19 +135,19 @@ export function ArchitecturalInterlude() {
                   cy="120"
                   r="90"
                   fill="none"
-                  stroke="#103B2F"
+                  stroke="#DAF1DE"
                   strokeWidth="0.6"
-                  strokeOpacity="0.3"
+                  strokeOpacity="0.35"
                 />
               </svg>
 
-              {/* Inner Rotating Emerald & Champagne-Gold Meridian Disc */}
+              {/* Inner Rotating Emerald Hexagonal Q Seal */}
               <div
                 ref={sealRef}
-                className="absolute w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#103B2F] border border-[#C6A96B] flex items-center justify-center shadow-lg"
+                className="absolute w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#163832] border border-[#8EB69B]/55 flex items-center justify-center shadow-xl"
               >
-                <div className="w-22 h-22 sm:w-24 sm:h-24 rounded-full border border-[#C6A96B]/40 flex items-center justify-center">
-                  <QuwarirMark className="w-11 h-11" variant="gold-on-dark" />
+                <div className="w-22 h-22 sm:w-24 sm:h-24 rounded-full border border-[#DAF1DE]/25 flex items-center justify-center">
+                  <QuwarirMark className="w-11 h-11" variant="mint-on-dark" />
                 </div>
               </div>
             </div>
@@ -155,14 +155,14 @@ export function ArchitecturalInterlude() {
             {/* Split Converging Typography */}
             <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-60 items-center">
               <div ref={leftTextRef} className="lg:text-right">
-                <p className="font-serif text-[clamp(1.85rem,3.2vw,3rem)] leading-[1.08] tracking-tight text-[#102D25]">
+                <p className="font-serif text-[clamp(1.85rem,3.2vw,3rem)] leading-[1.08] tracking-tight text-[#DAF1DE]">
                   CAPITAL IS NOT ONLY
                   <br />
                   WHAT MARKETS MEASURE.
                 </p>
               </div>
               <div ref={rightTextRef} className="lg:text-left">
-                <p className="font-serif text-[clamp(1.85rem,3.2vw,3rem)] leading-[1.08] tracking-tight text-[#103B2F]">
+                <p className="font-serif text-[clamp(1.85rem,3.2vw,3rem)] leading-[1.08] tracking-tight text-[#8EB69B]">
                   IT IS THE INTEGRITY
                   <br />
                   THAT REMAINS.
@@ -171,9 +171,9 @@ export function ArchitecturalInterlude() {
             </div>
           </div>
 
-          <div className="mt-10 lg:mt-16 flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-[0.22em] text-[#102D25]/65">
+          <div className="mt-10 lg:mt-16 flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-[0.22em] text-[#8EB69B]">
             <span>Invest Globally</span>
-            <span aria-hidden="true" className="text-[#C6A96B]">·</span>
+            <span aria-hidden="true" className="text-[#DAF1DE]">·</span>
             <span>Invest Ethically</span>
           </div>
         </div>

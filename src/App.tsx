@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen flex flex-col bg-[#F4F0E5] text-[#102D25]">
+      <div className="min-h-screen flex flex-col bg-[#051F20] text-[#DAF1DE]">
         <Navbar />
         <main ref={mainRef} className="flex-1">
           <HeroSection />

@@ -2,56 +2,39 @@ import React from "react";
 
 interface QuwarirMarkProps {
   className?: string;
-  variant?: "gold-on-dark" | "emerald-on-light";
+  variant?: "mint-on-dark" | "forest-on-light" | "gold-on-dark" | "emerald-on-light";
 }
 
+/**
+ * Hexagonal Geometric Q Logo matching the user's attached Geometric_Teal_Q_Logo_b9bd1742.png:
+ * Pointed-top regular hexagon shell with crisp angled negative-space channel and diagonal tail.
+ */
 export function QuwarirMark({
   className = "w-9 h-9",
-  variant = "gold-on-dark",
+  variant = "mint-on-dark",
 }: QuwarirMarkProps) {
-  const outerStroke = variant === "gold-on-dark" ? "#C6A96B" : "#103B2F";
-  const innerStroke = variant === "gold-on-dark" ? "#F4F0E5" : "#C6A96B";
-  const tailStroke = variant === "gold-on-dark" ? "#C6A96B" : "#103B2F";
+  const fill =
+    variant === "mint-on-dark" || variant === "gold-on-dark"
+      ? "#DAF1DE"
+      : "#0B2B26";
 
   return (
     <svg
-      viewBox="0 0 64 64"
+      viewBox="0 0 100 108"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
-      {/* Primary architectural circular ring of the Q */}
-      <circle
-        cx="30"
-        cy="30"
-        r="19"
-        stroke={outerStroke}
-        strokeWidth="3.2"
-      />
-      {/* Subtle 8-fold Islamic geometric octagram inlay */}
-      <polygon
-        points="30,15.5 40.25,19.75 44.5,30 40.25,40.25 30,44.5 19.75,40.25 15.5,30 19.75,19.75"
-        stroke={innerStroke}
-        strokeWidth="1.4"
-        strokeOpacity="0.7"
-      />
-      <rect
-        x="21.5"
-        y="21.5"
-        width="17"
-        height="17"
-        stroke={innerStroke}
-        strokeWidth="1.2"
-        strokeOpacity="0.45"
-        transform="rotate(45 30 30)"
-      />
-      {/* Precision meridian tail forming the Q lettermark */}
+      {/* Outer Hexagonal Q Shell with bottom-right diagonal gap */}
       <path
-        d="M36.5 36.5L51 51"
-        stroke={tailStroke}
-        strokeWidth="3.6"
-        strokeLinecap="round"
+        d="M50 4L88 26V72.5L74.5 64.7V33.8L50 19.6L25.5 33.8V66.2L50 80.4L61.2 73.9L73.6 81.1L50 94.8L12 72.8V26L50 4Z"
+        fill={fill}
+      />
+      {/* Precision Diagonal Q Tail */}
+      <path
+        d="M44.5 62.5L56.8 55.4L88 73.5V88.2L44.5 62.5Z"
+        fill={fill}
       />
     </svg>
   );
@@ -66,8 +49,8 @@ export function QuwarirLockup({
   variant = "light",
   markSize = "w-8 h-8",
 }: QuwarirLockupProps) {
-  const textColor = variant === "light" ? "text-[#F4F0E5]" : "text-[#102D25]";
-  const markVariant = variant === "light" ? "gold-on-dark" : "emerald-on-light";
+  const textColor = variant === "light" ? "text-[#DAF1DE]" : "text-[#0B2B26]";
+  const markVariant = variant === "light" ? "mint-on-dark" : "forest-on-light";
 
   return (
     <span className="inline-flex items-center gap-3 whitespace-nowrap shrink-0">

@@ -59,7 +59,7 @@ export function MarketsSection() {
   return (
     <section
       id="markets"
-      className="bg-[#102D25] text-[#F4F0E5] py-24 lg:py-32 border-b border-[#C6A96B]/20"
+      className="bg-[#0B2B26] text-[#DAF1DE] py-24 lg:py-32 border-b border-[#8EB69B]/15"
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Header */}
@@ -69,18 +69,18 @@ export function MarketsSection() {
         >
           <div className="lg:col-span-7">
             <div className="flex items-center gap-4 mb-5">
-              <span className="w-8 h-px bg-[#C6A96B]" aria-hidden="true" />
-              <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#C6A96B]">
+              <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+              <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#8EB69B]">
                 Global Markets
               </span>
             </div>
-            <h2 className="font-serif text-[clamp(2.25rem,4vw,3.5rem)] font-medium leading-[1.08] text-[#FFFFFF] text-balance">
+            <h2 className="font-serif text-[clamp(2.25rem,4vw,3.5rem)] font-medium leading-[1.08] text-[#DAF1DE] text-balance">
               Connecting Investors to Global Opportunities.
             </h2>
           </div>
 
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-[#E8EBE7]/80 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#8EB69B] leading-relaxed">
               Structured research and screening perspective across core regional exchanges and
               international equity horizons.
             </p>
@@ -90,30 +90,30 @@ export function MarketsSection() {
         {/* Cartographic Visual Frame */}
         <div
           data-gsap-reveal="image"
-          className="relative aspect-[16/9] max-h-[520px] w-full bg-[#103B2F] border border-[#C6A96B]/30 overflow-hidden mb-12"
+          className="relative aspect-[16/9] max-h-[520px] w-full rounded-2xl bg-[#051F20] border border-[#8EB69B]/25 overflow-hidden mb-12"
         >
           {!imgError ? (
             <img
               src="/src/assets/images/markets_global_network_1794885510879.jpg"
-              alt="Minimalist cartographic gold line atlas on deep emerald surface illustrating global market connectivity"
+              alt="Minimalist cartographic atlas on deep emerald surface illustrating global market connectivity"
               referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center p-10 bg-gradient-to-br from-[#103B2F] to-[#102D25]">
-              <p className="font-serif text-3xl text-[#C6A96B] text-center">
+            <div className="w-full h-full flex items-center justify-center p-10 bg-gradient-to-br from-[#163832] to-[#051F20]">
+              <p className="font-serif text-3xl text-[#DAF1DE] text-center">
                 Saudi Exchange (Tadawul) · US Capital Markets · Global Expansion
               </p>
             </div>
           )}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#102D25] via-[#102D25]/45 to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#051F20] via-[#051F20]/45 to-transparent"
           />
-          <div className="absolute bottom-5 left-6 right-6 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.18em] text-[#F4F0E5]/90">
+          <div className="absolute bottom-5 left-6 right-6 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-[0.18em] text-[#DAF1DE]">
             <span>Cross-Border Market Intelligence</span>
-            <span className="text-[#C6A96B]">Riyadh · New York · International</span>
+            <span className="text-[#8EB69B]">Riyadh · New York · International</span>
           </div>
         </div>
 
@@ -121,10 +121,10 @@ export function MarketsSection() {
         <div
           data-gsap-reveal="container"
           data-gsap-delay="0.08"
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
         >
           {/* Interactive Region Tabs */}
-          <div className="lg:col-span-4 flex flex-col border-t border-[#C6A96B]/25">
+          <div className="lg:col-span-4 flex flex-col gap-3">
             {(Object.keys(REGIONS) as RegionKey[]).map((key) => {
               const region = REGIONS[key];
               const active = activeRegion === key;
@@ -133,20 +133,20 @@ export function MarketsSection() {
                   key={region.key}
                   type="button"
                   onClick={() => setActiveRegion(region.key)}
-                  className={`relative w-full text-left py-6 px-5 border-b border-[#C6A96B]/25 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[#C6A96B] ${
+                  className={`relative w-full text-left py-5 px-6 rounded-2xl border transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[#DAF1DE] ${
                     active
-                      ? "bg-[#103B2F] text-[#FFFFFF]"
-                      : "bg-transparent text-[#F4F0E5]/75 hover:bg-[#103B2F]/50 hover:text-[#FFFFFF]"
+                      ? "bg-[#163832] border-[#8EB69B]/50 text-[#DAF1DE]"
+                      : "bg-[#051F20]/50 border-[#8EB69B]/15 text-[#8EB69B] hover:bg-[#163832]/50 hover:text-[#DAF1DE]"
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="market-active-bar"
                       transition={{ type: "spring", stiffness: 360, damping: 32 }}
-                      className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#C6A96B]"
+                      className="absolute left-0 top-4 bottom-4 w-1 rounded-r bg-[#DAF1DE]"
                     />
                   )}
-                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#C6A96B] mb-1">
+                  <p className="text-xs font-mono uppercase tracking-[0.18em] text-[#8EB69B] mb-1">
                     {region.exchange}
                   </p>
                   <p className="font-serif text-2xl font-medium">{region.label}</p>
@@ -156,7 +156,7 @@ export function MarketsSection() {
           </div>
 
           {/* Active Region Panel */}
-          <div className="lg:col-span-8 bg-[#103B2F]/60 border border-[#C6A96B]/25 p-8 sm:p-10 min-h-[340px]">
+          <div className="lg:col-span-8 rounded-2xl bg-[#163832]/75 backdrop-blur-md border border-[#8EB69B]/25 p-8 sm:p-10 min-h-[340px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.key}
@@ -165,41 +165,40 @@ export function MarketsSection() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex flex-wrap items-baseline justify-between gap-4 pb-6 mb-6 border-b border-[#C6A96B]/20">
+                <div className="flex flex-wrap items-baseline justify-between gap-4 pb-6 mb-6 border-b border-[#8EB69B]/20">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-[#C6A96B] mb-2">
+                    <p className="text-xs uppercase tracking-[0.2em] text-[#8EB69B] mb-2">
                       {current.exchange}
                     </p>
-                    <h3 className="font-serif text-3xl sm:text-4xl font-medium text-[#FFFFFF]">
+                    <h3 className="font-serif text-3xl sm:text-4xl font-medium text-[#DAF1DE]">
                       {current.headline}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-base text-[#E8EBE7]/90 leading-relaxed mb-8">
+                <p className="text-base text-[#DAF1DE]/90 leading-relaxed mb-8">
                   {current.description}
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6 border-t border-b border-[#C6A96B]/20 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6 border-t border-b border-[#8EB69B]/20 mb-6">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-1">
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-1">
                       {current.exampleLabel}
                     </p>
-                    <p className="font-serif text-2xl text-[#FFFFFF]">{current.exampleValue}</p>
+                    <p className="font-serif text-2xl text-[#DAF1DE]">{current.exampleValue}</p>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-1">
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-1">
                       Verification Principle
                     </p>
-                    <p className="text-sm text-[#E8EBE7]/85">
+                    <p className="text-sm text-[#DAF1DE]/85">
                       Independent Screening &amp; Periodic Review Required
                     </p>
                   </div>
                 </div>
 
-                {/* Shariah Verification Notice */}
-                <p className="text-xs sm:text-sm text-[#E8EBE7]/75 leading-relaxed">
-                  <span className="text-[#C6A96B] font-semibold">Shariah Verification Note: </span>
+                <p className="text-xs sm:text-sm text-[#8EB69B] leading-relaxed">
+                  <span className="text-[#DAF1DE] font-semibold">Shariah Verification Note: </span>
                   {current.note} Displaying any exchange or company name does not constitute an
                   automatic determination of Shariah compliance; compliance requires ongoing
                   independent screening and regular financial verification.

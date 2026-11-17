@@ -20,20 +20,16 @@ export function HeroSection() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // Normalized pointer offsets (-0.5 to 0.5) for subtle editorial parallax
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
   const smoothX = useSpring(pointerX, { stiffness: 110, damping: 24, mass: 0.8 });
   const smoothY = useSpring(pointerY, { stiffness: 110, damping: 24, mass: 0.8 });
 
-  // Multi-plane depth translations (compositor-only x/y)
   const imageX = useTransform(smoothX, [-0.5, 0.5], [-14, 14]);
   const imageY = useTransform(smoothY, [-0.5, 0.5], [-14, 14]);
   const ringX = useTransform(smoothX, [-0.5, 0.5], [10, -10]);
   const ringY = useTransform(smoothY, [-0.5, 0.5], [10, -10]);
-  const captionX = useTransform(smoothX, [-0.5, 0.5], [-5, 5]);
-  const captionY = useTransform(smoothY, [-0.5, 0.5], [-4, 4]);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
     if (prefersReducedMotion || e.pointerType === "touch") return;
@@ -105,271 +101,218 @@ export function HeroSection() {
       id="home"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="relative bg-gradient-to-br from-[#103B2F] via-[#103B2F] to-[#102D25] text-[#F4F0E5] pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden"
+      className="relative bg-gradient-to-b from-[#051F20] via-[#0B2B26] to-[#0B2B26] text-[#DAF1DE] pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden border-b border-[#8EB69B]/15"
     >
-      {/* Subtle architectural hairline frame grid */}
+      {/* Atmospheric emerald radial glow inspired by Image 2 & Image 3 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(198,169,107,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(198,169,107,0.08) 1px, transparent 1px)",
-          backgroundSize: "120px 120px",
-        }}
+        className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[520px] rounded-full bg-[#235347]/40 blur-3xl"
       />
 
-      {/* Ambient Geometric Meridian Curves (SVG) with subtle counter-parallax */}
+      {/* Subtle rotating geometric rings */}
       <motion.svg
         aria-hidden="true"
-        viewBox="0 0 1200 720"
+        viewBox="0 0 800 800"
         fill="none"
         style={prefersReducedMotion ? undefined : { x: ringX, y: ringY }}
-        className="pointer-events-none absolute -right-24 top-10 w-[860px] h-[540px] opacity-25"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] opacity-20"
       >
         <motion.circle
-          cx="760"
-          cy="340"
-          r="280"
-          stroke="#C6A96B"
+          cx="400"
+          cy="400"
+          r="330"
+          stroke="#8EB69B"
           strokeWidth="0.75"
-          strokeDasharray="6 10"
+          strokeDasharray="5 12"
           animate={prefersReducedMotion ? undefined : { rotate: 360 }}
-          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "760px 340px" }}
+          transition={{ duration: 95, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "400px 400px" }}
         />
         <motion.circle
-          cx="760"
-          cy="340"
-          r="210"
-          stroke="#F4F0E5"
-          strokeWidth="0.5"
-          strokeOpacity="0.4"
+          cx="400"
+          cy="400"
+          r="260"
+          stroke="#DAF1DE"
+          strokeWidth="0.6"
+          strokeOpacity="0.45"
           animate={prefersReducedMotion ? undefined : { rotate: -360 }}
-          transition={{ duration: 65, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "760px 340px" }}
+          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "400px 400px" }}
         />
       </motion.svg>
 
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-stretch">
-          {/* LEFT COLUMN — Asymmetrical Editorial Narrative */}
-          <div className="lg:col-span-7 flex flex-col justify-between py-2 lg:py-6">
-            <div>
-              {/* Introductory Label (unboxed, zero pills) */}
-              <motion.div
-                initial={fadeInitial}
-                animate={fadeAnimate}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center gap-4 mb-8"
-              >
-                <span className="w-10 h-px bg-[#C6A96B]" aria-hidden="true" />
-                <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#C6A96B]">
-                  Global Islamic Finance
-                </span>
-              </motion.div>
+        {/* Top Monumental Display Typography spanning across Hero (inspired by Image 3) */}
+        <div className="text-center max-w-5xl mx-auto mb-10 lg:mb-14">
+          <motion.div
+            initial={fadeInitial}
+            animate={fadeAnimate}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-3 mb-5"
+          >
+            <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+            <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#8EB69B]">
+              Global Islamic Finance
+            </span>
+            <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+          </motion.div>
 
-              {/* Masked Editorial Headline Reveal */}
-              <div className="overflow-hidden mb-6">
-                <motion.h1
-                  initial={maskedInitial}
-                  animate={maskedAnimate}
-                  transition={{ duration: 0.72, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-serif text-[clamp(3rem,6vw,5.25rem)] font-medium leading-[1.02] tracking-tight text-[#FFFFFF] text-balance"
-                >
-                  Wealth With Purpose.
-                </motion.h1>
-              </div>
-
-              {/* Supporting Headline */}
-              <div className="overflow-hidden mb-6">
-                <motion.p
-                  initial={maskedInitial}
-                  animate={maskedAnimate}
-                  transition={{ duration: 0.68, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-serif italic text-2xl sm:text-3xl text-[#C6A96B] leading-snug max-w-xl"
-                >
-                  A New Perspective on Global Investing.
-                </motion.p>
-              </div>
-
-              {/* Company Introduction */}
-              <motion.p
-                initial={fadeInitial}
-                animate={fadeAnimate}
-                transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="text-base sm:text-lg text-[#E8EBE7]/90 leading-relaxed max-w-xl mb-10"
-              >
-                Discover a new perspective on global investing. QUWARIR connects financial
-                technology with Islamic investment principles to make global opportunities more
-                accessible.
-              </motion.p>
-
-              {/* CTA Row */}
-              <motion.div
-                initial={fadeInitial}
-                animate={fadeAnimate}
-                transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-4 mb-12"
-              >
-                <a
-                  href="#about"
-                  className="inline-flex items-center gap-3 px-7 py-4 bg-[#C6A96B] text-[#102D25] text-sm font-semibold tracking-wider uppercase hover:bg-[#d6bc82] hover:-translate-y-0.5 transition-all duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4F0E5]"
-                >
-                  <span>Discover QUWARIR</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <a
-                  href="#vision"
-                  className="inline-flex items-center gap-3 px-7 py-4 border border-[#C6A96B]/60 text-[#F4F0E5] text-sm font-semibold tracking-wider uppercase hover:bg-[#C6A96B]/10 hover:border-[#C6A96B] transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C6A96B]"
-                >
-                  Explore Our Vision
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleToggleAudioBriefing}
-                  disabled={audioLoading}
-                  className="inline-flex items-center gap-2.5 px-4 py-4 text-xs font-medium tracking-wider uppercase text-[#C6A96B] hover:text-[#F4F0E5] transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-[#C6A96B] disabled:opacity-60"
-                  aria-label={isPlaying ? "Stop executive audio briefing" : "Listen to executive audio briefing"}
-                >
-                  {audioLoading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : isPlaying ? (
-                    <Square className="w-4 h-4 fill-current" />
-                  ) : (
-                    <Volume2 className="w-4 h-4" />
-                  )}
-                  <span>{audioLoading ? "Preparing Audio" : isPlaying ? "Stop Briefing" : "Audio Briefing"}</span>
-                  {isPlaying && !prefersReducedMotion && (
-                    <span className="inline-flex items-end gap-0.5 h-3 ml-1" aria-hidden="true">
-                      <motion.span
-                        animate={{ scaleY: [0.35, 1, 0.45] }}
-                        transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
-                        className="w-0.5 h-full bg-[#C6A96B] origin-bottom"
-                      />
-                      <motion.span
-                        animate={{ scaleY: [0.85, 0.3, 0.95] }}
-                        transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut", delay: 0.12 }}
-                        className="w-0.5 h-full bg-[#C6A96B] origin-bottom"
-                      />
-                      <motion.span
-                        animate={{ scaleY: [0.4, 0.9, 0.3] }}
-                        transition={{ duration: 0.65, repeat: Infinity, ease: "easeInOut", delay: 0.24 }}
-                        className="w-0.5 h-full bg-[#C6A96B] origin-bottom"
-                      />
-                    </span>
-                  )}
-                </button>
-              </motion.div>
-
-              {audioError && (
-                <p role="alert" className="text-xs text-[#F4F0E5]/80 mb-6">
-                  {audioError}
-                </p>
-              )}
-            </div>
-
-            {/* Company Highlights Row */}
-            <motion.div
-              initial={fadeInitial}
-              animate={fadeAnimate}
-              transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
-              className="pt-8 border-t border-[#C6A96B]/25 grid grid-cols-1 sm:grid-cols-3 gap-6"
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={maskedInitial}
+              animate={maskedAnimate}
+              transition={{ duration: 0.72, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="font-serif text-[clamp(3.15rem,7.2vw,6.25rem)] font-medium leading-[0.98] tracking-tight text-[#DAF1DE] text-balance"
             >
-              <div>
-                <p className="text-xs font-mono tracking-widest uppercase text-[#C6A96B] mb-1 tabular-nums">
-                  01
-                </p>
-                <p className="text-sm font-semibold tracking-wider uppercase text-[#FFFFFF]">
-                  Global Markets
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-mono tracking-widest uppercase text-[#C6A96B] mb-1 tabular-nums">
-                  02
-                </p>
-                <p className="text-sm font-semibold tracking-wider uppercase text-[#FFFFFF]">
-                  Shariah Principles
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-mono tracking-widest uppercase text-[#C6A96B] mb-1 tabular-nums">
-                  03
-                </p>
-                <p className="text-sm font-semibold tracking-wider uppercase text-[#FFFFFF]">
-                  Financial Technology
-                </p>
-              </div>
-            </motion.div>
+              Wealth With Purpose.
+            </motion.h1>
           </div>
+        </div>
 
-          {/* RIGHT COLUMN — Dominant Visual Panel + Oversized Vertical Typography */}
+        {/* 3-Zone Composition below Monumental Headline: Left CTAs — Center Sculptural Visual — Right Editorial Copy */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* LEFT: Stacked Rounded CTAs (inspired by Image 3) */}
+          <motion.div
+            initial={fadeInitial}
+            animate={fadeAnimate}
+            transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-3 flex flex-col gap-3.5 order-2 lg:order-1"
+          >
+            <a
+              href="#about"
+              className="inline-flex items-center justify-between gap-3 px-6 py-3.5 rounded-xl bg-[#DAF1DE] text-[#051F20] text-sm font-semibold hover:bg-[#FFFFFF] hover:-translate-y-0.5 transition-all duration-150 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8EB69B]"
+            >
+              <span>Discover QUWARIR</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+
+            <a
+              href="#vision"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl border border-[#DAF1DE]/55 text-[#DAF1DE] text-sm font-semibold hover:bg-[#163832] hover:border-[#DAF1DE] transition-colors duration-150 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DAF1DE]"
+            >
+              Explore Our Vision
+            </a>
+
+            <button
+              type="button"
+              onClick={handleToggleAudioBriefing}
+              disabled={audioLoading}
+              className="mt-1 inline-flex items-center justify-center lg:justify-start gap-2.5 px-2 py-2 text-xs font-medium tracking-wider uppercase text-[#8EB69B] hover:text-[#DAF1DE] transition-colors duration-150 whitespace-nowrap disabled:opacity-60"
+              aria-label={isPlaying ? "Stop executive audio briefing" : "Listen to executive audio briefing"}
+            >
+              {audioLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : isPlaying ? (
+                <Square className="w-4 h-4 fill-current" />
+              ) : (
+                <Volume2 className="w-4 h-4" />
+              )}
+              <span>{audioLoading ? "Preparing Audio" : isPlaying ? "Stop Briefing" : "Audio Briefing"}</span>
+              {isPlaying && !prefersReducedMotion && (
+                <span className="inline-flex items-end gap-0.5 h-3 ml-1" aria-hidden="true">
+                  <motion.span
+                    animate={{ scaleY: [0.35, 1, 0.45] }}
+                    transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-0.5 h-full bg-[#DAF1DE] origin-bottom"
+                  />
+                  <motion.span
+                    animate={{ scaleY: [0.85, 0.3, 0.95] }}
+                    transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut", delay: 0.12 }}
+                    className="w-0.5 h-full bg-[#DAF1DE] origin-bottom"
+                  />
+                  <motion.span
+                    animate={{ scaleY: [0.4, 0.9, 0.3] }}
+                    transition={{ duration: 0.65, repeat: Infinity, ease: "easeInOut", delay: 0.24 }}
+                    className="w-0.5 h-full bg-[#DAF1DE] origin-bottom"
+                  />
+                </span>
+              )}
+            </button>
+
+            {audioError && (
+              <p role="alert" className="text-xs text-[#8EB69B]">
+                {audioError}
+              </p>
+            )}
+          </motion.div>
+
+          {/* CENTER: Overlapping Sculptural Globe with Mouse-Follow Parallax */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex items-stretch gap-4 lg:gap-6"
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center order-1 lg:order-2"
           >
             <div
               data-gsap-parallax="-18"
-              className="relative flex-1 min-h-[420px] lg:min-h-[580px] bg-[#102D25] border border-[#C6A96B]/30 overflow-hidden"
+              className="relative w-full max-w-[400px] aspect-[4/5] rounded-[2rem] bg-[#051F20] border border-[#8EB69B]/30 overflow-hidden shadow-2xl"
             >
               {!imgError ? (
                 <motion.img
                   src="/src/assets/images/hero_quwarir_globe_1794885509484.jpg"
-                  alt="Brushed champagne gold celestial globe resting on deep emerald marble symbolizing QUWARIR global Islamic financial connectivity"
+                  alt="Architectural globe resting on deep emerald marble symbolizing QUWARIR global Islamic financial connectivity"
                   referrerPolicy="no-referrer"
                   onError={() => setImgError(true)}
                   style={
                     prefersReducedMotion
                       ? undefined
-                      : { x: imageX, y: imageY, scale: 1.05 }
+                      : { x: imageX, y: imageY, scale: 1.06 }
                   }
                   className="w-full h-full object-cover object-center will-change-transform"
                 />
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center p-10 bg-gradient-to-b from-[#103B2F] to-[#102D25] text-center">
-                  <div className="w-28 h-28 rounded-full border border-[#C6A96B]/50 flex items-center justify-center mb-6">
-                    <div className="w-16 h-16 rotate-45 border border-[#F4F0E5]/40" />
-                  </div>
-                  <p className="font-serif text-2xl text-[#F4F0E5]">
+                <div className="w-full h-full flex flex-col items-center justify-center p-10 bg-gradient-to-b from-[#163832] to-[#051F20] text-center">
+                  <p className="font-serif text-2xl text-[#DAF1DE]">
                     Invest Globally. Invest Ethically.
                   </p>
                 </div>
               )}
 
-              {/* Measured bottom contrast scrim */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#102D25]/90 via-[#102D25]/45 to-transparent"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#051F20]/90 via-[#051F20]/40 to-transparent"
               />
-
-              <motion.div
-                style={prefersReducedMotion ? undefined : { x: captionX, y: captionY }}
-                className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4"
-              >
+              <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
                 <div>
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#C6A96B] mb-1">
-                    Brand Ethos
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#8EB69B] mb-1">
+                    Global Investment
                   </p>
-                  <p className="font-serif text-lg text-[#F4F0E5]">
+                  <p className="font-serif text-lg text-[#DAF1DE]">
                     Invest Globally. Invest Ethically.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
+          </motion.div>
 
-            {/* Oversized Vertical Typography */}
-            <div
-              data-gsap-parallax="18"
-              className="hidden sm:flex flex-col items-center justify-between py-2 select-none shrink-0"
-            >
-              <span className="w-px h-14 bg-[#C6A96B]/50" aria-hidden="true" />
-              <p className="vertical-editorial-text font-serif text-2xl xl:text-3xl tracking-[0.32em] uppercase text-[#C6A96B]/75">
-                GLOBAL INVESTMENT
-              </p>
-              <span className="w-px h-14 bg-[#C6A96B]/50" aria-hidden="true" />
+          {/* RIGHT: Editorial Intro & Highlights */}
+          <motion.div
+            initial={fadeInitial}
+            animate={fadeAnimate}
+            transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4 space-y-6 order-3"
+          >
+            <p className="font-serif italic text-2xl sm:text-3xl text-[#8EB69B] leading-snug">
+              A New Perspective on Global Investing.
+            </p>
+            <p className="text-sm sm:text-base text-[#DAF1DE]/85 leading-relaxed">
+              Discover a new perspective on global investing. QUWARIR connects financial technology
+              with Islamic investment principles to make global opportunities more accessible.
+            </p>
+
+            <div className="pt-5 border-t border-[#8EB69B]/25 grid grid-cols-3 gap-4 text-xs">
+              <div>
+                <p className="font-mono text-[#8EB69B] mb-1 tabular-nums">01</p>
+                <p className="font-semibold text-[#DAF1DE]">Global Markets</p>
+              </div>
+              <div>
+                <p className="font-mono text-[#8EB69B] mb-1 tabular-nums">02</p>
+                <p className="font-semibold text-[#DAF1DE]">Shariah Principles</p>
+              </div>
+              <div>
+                <p className="font-mono text-[#8EB69B] mb-1 tabular-nums">03</p>
+                <p className="font-semibold text-[#DAF1DE]">Financial Tech</p>
+              </div>
             </div>
           </motion.div>
         </div>

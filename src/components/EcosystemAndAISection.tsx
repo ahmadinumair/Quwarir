@@ -75,15 +75,14 @@ const TTS_PRESETS = [
 ];
 
 const IMAGE_PRESETS = [
-  "Minimalist deep emerald and brushed champagne gold architectural pavilion representing global Islamic financial connectivity",
-  "Modern Riyadh financial towers reflected in calm water at twilight, warm champagne gold sunlight",
-  "Geometric brass astrolabe and architectural compass resting on dark forest green stone",
+  "Minimalist deep emerald and sage-mint architectural pavilion representing global Islamic financial connectivity",
+  "Modern Riyadh financial towers reflected in calm water at twilight, deep emerald glass and subtle mist",
+  "Hexagonal architectural compass resting on dark forest green stone, minimalist editorial studio photography",
 ];
 
 export function EcosystemAndAISection() {
   const [activeTab, setActiveTab] = useState<WorkspaceTab>("chat");
 
-  // Multi-turn Chat State
   const [chatRole, setChatRole] = useState<ChatRole>("shariah_methodology");
   const [chatModel, setChatModel] = useState<ChatModel>("gemini-4-hydrogen");
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -100,7 +99,6 @@ export function EcosystemAndAISection() {
   const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
   const chatScrollRef = useRef<HTMLDivElement | null>(null);
 
-  // TTS Studio State
   const [ttsText, setTtsText] = useState(TTS_PRESETS[0].text);
   const [ttsVoice, setTtsVoice] = useState("Charon");
   const [ttsLoading, setTtsLoading] = useState(false);
@@ -108,7 +106,6 @@ export function EcosystemAndAISection() {
   const [ttsError, setTtsError] = useState<string | null>(null);
   const inlineAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Image Studio State (gemini-3-pro-image-preview with 1K / 2K / 4K)
   const [imgPrompt, setImgPrompt] = useState(IMAGE_PRESETS[0]);
   const [imageSize, setImageSize] = useState<ImageSize>("1K");
   const [aspectRatio, setAspectRatio] = useState<ImageRatio>("16:9");
@@ -274,7 +271,7 @@ export function EcosystemAndAISection() {
   return (
     <section
       id="ecosystem"
-      className="bg-[#F4F0E5] text-[#102D25] py-24 lg:py-32 border-b border-[#102D25]/10"
+      className="bg-[#163832] text-[#DAF1DE] py-24 lg:py-32 border-b border-[#8EB69B]/20"
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Section Header */}
@@ -284,50 +281,50 @@ export function EcosystemAndAISection() {
         >
           <div className="lg:col-span-7">
             <div className="flex items-center gap-4 mb-5">
-              <span className="w-8 h-px bg-[#103B2F]" aria-hidden="true" />
-              <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#103B2F]">
+              <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+              <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#8EB69B]">
                 Technology &amp; Ecosystem
               </span>
             </div>
-            <h2 className="font-serif text-[clamp(2.25rem,4vw,3.5rem)] font-medium leading-[1.08] text-[#102D25] text-balance">
+            <h2 className="font-serif text-[clamp(2.25rem,4vw,3.5rem)] font-medium leading-[1.08] text-[#DAF1DE] text-balance">
               Technology That Connects Financial Opportunities.
             </h2>
           </div>
 
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-[#102D25]/80 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#DAF1DE]/80 leading-relaxed">
               Designing modular financial architecture that bridges international market
               infrastructure, multi-currency access concepts, and intelligent research workflows.
             </p>
           </div>
         </div>
 
-        {/* Prospective Ecosystem Architecture (No false official partnership claims) */}
+        {/* Prospective Ecosystem Architecture */}
         <div
           data-gsap-stagger-group
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
         >
           <div
             data-gsap-stagger-item
-            className="bg-[#FFFFFF] border border-[#102D25]/15 p-8 sm:p-10 flex flex-col justify-between"
+            className="rounded-2xl bg-[#0B2B26]/85 backdrop-blur-md border border-[#8EB69B]/20 p-8 sm:p-10 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
-                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#103B2F]">
+                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#8EB69B]">
                   Prospective Ecosystem Layer
                 </span>
-                <span className="text-xs text-[#102D25]/60">Brokerage Connectivity</span>
+                <span className="text-xs text-[#8EB69B]/80">Brokerage Connectivity</span>
               </div>
-              <h3 className="font-serif text-3xl font-medium text-[#102D25] mb-3">
+              <h3 className="font-serif text-3xl font-medium text-[#DAF1DE] mb-3">
                 Interactive Brokers (IBKR)
               </h3>
-              <p className="text-sm sm:text-base text-[#102D25]/80 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-[#DAF1DE]/80 leading-relaxed mb-6">
                 Potential brokerage ecosystem integration envisioned to support eligible
                 international investors seeking structured cross-border equity access alongside
                 QUWARIR&apos;s screening intelligence.
               </p>
             </div>
-            <p className="pt-5 border-t border-[#102D25]/12 text-xs text-[#102D25]/65 leading-relaxed">
+            <p className="pt-5 border-t border-[#8EB69B]/15 text-xs text-[#8EB69B] leading-relaxed">
               Future architecture concept. QUWARIR does not claim an existing official partnership
               or live brokerage execution on this site.
             </p>
@@ -335,22 +332,22 @@ export function EcosystemAndAISection() {
 
           <div
             data-gsap-stagger-item
-            className="bg-[#FFFFFF] border border-[#102D25]/15 p-8 sm:p-10 flex flex-col justify-between"
+            className="rounded-2xl bg-[#0B2B26]/85 backdrop-blur-md border border-[#8EB69B]/20 p-8 sm:p-10 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between gap-4 mb-6">
-                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#103B2F]">
+                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#8EB69B]">
                   Prospective Ecosystem Layer
                 </span>
-                <span className="text-xs text-[#102D25]/60">Cross-Border Transfers</span>
+                <span className="text-xs text-[#8EB69B]/80">Cross-Border Transfers</span>
               </div>
-              <h3 className="font-serif text-3xl font-medium text-[#102D25] mb-3">Wise</h3>
-              <p className="text-sm sm:text-base text-[#102D25]/80 leading-relaxed mb-6">
+              <h3 className="font-serif text-3xl font-medium text-[#DAF1DE] mb-3">Wise</h3>
+              <p className="text-sm sm:text-base text-[#DAF1DE]/80 leading-relaxed mb-6">
                 Potential international money transfer and multi-currency conversion workflow,
                 subject to user eligibility, regional licensing, and applicable financial conditions.
               </p>
             </div>
-            <p className="pt-5 border-t border-[#102D25]/12 text-xs text-[#102D25]/65 leading-relaxed">
+            <p className="pt-5 border-t border-[#8EB69B]/15 text-xs text-[#8EB69B] leading-relaxed">
               Future architecture concept. QUWARIR does not claim an existing official partnership
               or payment gateway integration on this site.
             </p>
@@ -360,21 +357,21 @@ export function EcosystemAndAISection() {
         {/* Interactive QUWARIR Research & Media Desk */}
         <div
           data-gsap-reveal="container"
-          className="bg-[#102D25] text-[#F4F0E5] border border-[#C6A96B]/30"
+          className="rounded-2xl bg-[#051F20] text-[#DAF1DE] border border-[#8EB69B]/25 overflow-hidden"
         >
           {/* Toolbar Header */}
-          <div className="p-6 sm:p-8 border-b border-[#C6A96B]/20 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="p-6 sm:p-8 border-b border-[#8EB69B]/20 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-[#C6A96B] mb-1">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#8EB69B] mb-1">
                 Interactive Intelligence Suite
               </p>
-              <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#FFFFFF]">
+              <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#DAF1DE]">
                 QUWARIR Research &amp; Media Desk
               </h3>
             </div>
 
             {/* Segmented Mode Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 bg-[#103B2F] p-1.5 border border-[#C6A96B]/25">
+            <div className="flex flex-wrap items-center gap-1.5 rounded-xl bg-[#0B2B26] p-1.5 border border-[#8EB69B]/20">
               {(
                 [
                   { id: "chat", label: "Research Assistant", Icon: MessageSquare },
@@ -388,17 +385,17 @@ export function EcosystemAndAISection() {
                     key={id}
                     type="button"
                     onClick={() => setActiveTab(id)}
-                    className={`relative inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap shrink-0 ${
+                    className={`relative inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors whitespace-nowrap shrink-0 ${
                       isActive
-                        ? "text-[#102D25]"
-                        : "text-[#F4F0E5]/80 hover:text-[#FFFFFF]"
+                        ? "text-[#051F20]"
+                        : "text-[#8EB69B] hover:text-[#DAF1DE]"
                     }`}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="desk-active-tab"
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                        className="absolute inset-0 bg-[#C6A96B]"
+                        className="absolute inset-0 rounded-lg bg-[#DAF1DE]"
                       />
                     )}
                     <Icon className="relative z-10 w-3.5 h-3.5" />
@@ -410,443 +407,438 @@ export function EcosystemAndAISection() {
           </div>
 
           <AnimatePresence mode="wait">
-          {/* TAB 1: Multi-Turn Gemini Chat */}
-          {activeTab === "chat" && (
-            <motion.div
-              key="tab-chat"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-12"
-            >
-              {/* Role & Model Configuration Sidebar */}
-              <div className="lg:col-span-4 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-[#C6A96B]/20 space-y-6">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-3">
-                    Advisor Role
-                  </p>
-                  <div className="space-y-2">
-                    {ROLE_OPTIONS.map((role) => (
-                      <button
-                        key={role.id}
-                        type="button"
-                        onClick={() => setChatRole(role.id)}
-                        className={`w-full text-left p-3.5 border transition-colors ${
-                          chatRole === role.id
-                            ? "bg-[#103B2F] border-[#C6A96B] text-[#FFFFFF]"
-                            : "bg-transparent border-white/10 text-[#E8EBE7]/75 hover:border-white/25"
-                        }`}
-                      >
-                        <p className="text-sm font-semibold mb-1">{role.label}</p>
-                        <p className="text-xs text-[#E8EBE7]/70 leading-relaxed">{role.summary}</p>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="quwarir-model-select"
-                    className="block text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-2"
-                  >
-                    Reasoning Profile
-                  </label>
-                  <select
-                    id="quwarir-model-select"
-                    value={chatModel}
-                    onChange={(e) => setChatModel(e.target.value as ChatModel)}
-                    className="w-full bg-[#103B2F] border border-[#C6A96B]/30 px-3.5 py-2.5 text-sm text-[#F4F0E5] focus-visible:outline-2 focus-visible:outline-[#C6A96B]"
-                  >
-                    {MODEL_OPTIONS.map((m) => (
-                      <option key={m.id} value={m.id}>
-                        {m.label} ({m.hint})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-2.5">
-                    Suggested Prompts
-                  </p>
-                  <div className="space-y-2">
-                    {STARTER_QUESTIONS.map((q) => (
-                      <button
-                        key={q}
-                        type="button"
-                        onClick={() => handleSendChat(q)}
-                        disabled={chatLoading}
-                        className="w-full text-left text-xs text-[#E8EBE7]/85 hover:text-[#C6A96B] py-1.5 border-b border-white/10 transition-colors disabled:opacity-50"
-                      >
-                        {q}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Scrollable Conversation Thread */}
-              <div className="lg:col-span-8 flex flex-col h-[520px]">
-                <div
-                  ref={chatScrollRef}
-                  className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6"
-                  aria-live="polite"
-                >
-                  {messages.map((msg) => (
-                    <div
-                      key={msg.id}
-                      className={`flex flex-col ${
-                        msg.role === "user" ? "items-end" : "items-start"
-                      }`}
-                    >
-                      <div
-                        className={`max-w-[85%] p-5 ${
-                          msg.role === "user"
-                            ? "bg-[#C6A96B] text-[#102D25]"
-                            : "bg-[#103B2F] border border-[#C6A96B]/25 text-[#F4F0E5]"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between gap-4 mb-2 text-[11px] uppercase tracking-[0.15em] opacity-75">
-                          <span>{msg.role === "user" ? "You" : "QUWARIR Assistant"}</span>
-                          {msg.role === "model" && (
-                            <button
-                              type="button"
-                              onClick={() => handleSpeakText(msg.text, msg.id)}
-                              className="inline-flex items-center gap-1 text-[#C6A96B] hover:text-[#FFFFFF] transition-colors"
-                              aria-label="Listen to assistant response"
-                            >
-                              {speakingMessageId === msg.id ? (
-                                <>
-                                  <Square className="w-3 h-3 fill-current" />
-                                  <span>Stop</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Volume2 className="w-3.5 h-3.5" />
-                                  <span>Listen</span>
-                                </>
-                              )}
-                            </button>
-                          )}
-                        </div>
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
-                      </div>
+            {/* TAB 1: Multi-Turn Gemini Chat */}
+            {activeTab === "chat" && (
+              <motion.div
+                key="tab-chat"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                className="grid grid-cols-1 lg:grid-cols-12"
+              >
+                <div className="lg:col-span-4 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-[#8EB69B]/20 space-y-6">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-3">
+                      Advisor Role
+                    </p>
+                    <div className="space-y-2">
+                      {ROLE_OPTIONS.map((role) => (
+                        <button
+                          key={role.id}
+                          type="button"
+                          onClick={() => setChatRole(role.id)}
+                          className={`w-full text-left p-3.5 rounded-xl border transition-colors ${
+                            chatRole === role.id
+                              ? "bg-[#163832] border-[#8EB69B] text-[#DAF1DE]"
+                              : "bg-transparent border-[#8EB69B]/15 text-[#8EB69B] hover:border-[#8EB69B]/40"
+                          }`}
+                        >
+                          <p className="text-sm font-semibold mb-1 text-[#DAF1DE]">{role.label}</p>
+                          <p className="text-xs text-[#8EB69B] leading-relaxed">{role.summary}</p>
+                        </button>
+                      ))}
                     </div>
-                  ))}
+                  </div>
 
-                  {chatLoading && (
-                    <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#C6A96B]">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Formulating response...</span>
+                  <div>
+                    <label
+                      htmlFor="quwarir-model-select"
+                      className="block text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-2"
+                    >
+                      Reasoning Profile
+                    </label>
+                    <select
+                      id="quwarir-model-select"
+                      value={chatModel}
+                      onChange={(e) => setChatModel(e.target.value as ChatModel)}
+                      className="w-full rounded-xl bg-[#0B2B26] border border-[#8EB69B]/30 px-3.5 py-2.5 text-sm text-[#DAF1DE] focus-visible:outline-2 focus-visible:outline-[#DAF1DE]"
+                    >
+                      {MODEL_OPTIONS.map((m) => (
+                        <option key={m.id} value={m.id}>
+                          {m.label} ({m.hint})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-2.5">
+                      Suggested Prompts
+                    </p>
+                    <div className="space-y-2">
+                      {STARTER_QUESTIONS.map((q) => (
+                        <button
+                          key={q}
+                          type="button"
+                          onClick={() => handleSendChat(q)}
+                          disabled={chatLoading}
+                          className="w-full text-left text-xs text-[#DAF1DE]/80 hover:text-[#8EB69B] py-1.5 border-b border-[#8EB69B]/15 transition-colors disabled:opacity-50"
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-8 flex flex-col h-[520px]">
+                  <div
+                    ref={chatScrollRef}
+                    className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6"
+                    aria-live="polite"
+                  >
+                    {messages.map((msg) => (
+                      <div
+                        key={msg.id}
+                        className={`flex flex-col ${
+                          msg.role === "user" ? "items-end" : "items-start"
+                        }`}
+                      >
+                        <div
+                          className={`max-w-[85%] rounded-2xl p-5 ${
+                            msg.role === "user"
+                              ? "bg-[#DAF1DE] text-[#051F20]"
+                              : "bg-[#0B2B26] border border-[#8EB69B]/25 text-[#DAF1DE]"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between gap-4 mb-2 text-[11px] uppercase tracking-[0.15em] opacity-75">
+                            <span>{msg.role === "user" ? "You" : "QUWARIR Assistant"}</span>
+                            {msg.role === "model" && (
+                              <button
+                                type="button"
+                                onClick={() => handleSpeakText(msg.text, msg.id)}
+                                className="inline-flex items-center gap-1 text-[#8EB69B] hover:text-[#DAF1DE] transition-colors"
+                                aria-label="Listen to assistant response"
+                              >
+                                {speakingMessageId === msg.id ? (
+                                  <>
+                                    <Square className="w-3 h-3 fill-current" />
+                                    <span>Stop</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Volume2 className="w-3.5 h-3.5" />
+                                    <span>Listen</span>
+                                  </>
+                                )}
+                              </button>
+                            )}
+                          </div>
+                          <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+                        </div>
+                      </div>
+                    ))}
+
+                    {chatLoading && (
+                      <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#8EB69B]">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Formulating response...</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {chatError && (
+                    <div
+                      role="alert"
+                      className="mx-6 mb-3 px-4 py-2.5 rounded-xl bg-[#163832] border border-[#8EB69B]/50 text-xs text-[#DAF1DE]"
+                    >
+                      {chatError}
                     </div>
                   )}
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSendChat();
+                    }}
+                    className="p-4 sm:p-6 border-t border-[#8EB69B]/20 flex items-center gap-3 bg-[#051F20]"
+                  >
+                    <input
+                      type="text"
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      placeholder="Ask about Shariah screening, global markets, or Islamic finance..."
+                      className="flex-1 rounded-xl bg-[#0B2B26] border border-[#8EB69B]/30 px-4 py-3 text-sm text-[#DAF1DE] placeholder:text-[#8EB69B]/60 focus-visible:outline-2 focus-visible:outline-[#DAF1DE]"
+                    />
+                    <button
+                      type="submit"
+                      disabled={chatLoading || !chatInput.trim()}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#DAF1DE] text-[#051F20] text-xs font-semibold uppercase tracking-wider hover:bg-[#FFFFFF] transition-colors disabled:opacity-50 whitespace-nowrap shrink-0"
+                    >
+                      <span>Send</span>
+                      <Send className="w-3.5 h-3.5" />
+                    </button>
+                  </form>
+                </div>
+              </motion.div>
+            )}
+
+            {/* TAB 2: Executive Audio Briefing (gemini-3.8-flash-tts) */}
+            {activeTab === "tts" && (
+              <motion.form
+                key="tab-tts"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                onSubmit={handleSynthesizeBriefing}
+                className="p-6 sm:p-10 space-y-6"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  <div className="lg:col-span-8 space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <label
+                        htmlFor="tts-briefing-text"
+                        className="text-xs uppercase tracking-[0.18em] text-[#8EB69B]"
+                      >
+                        Briefing Script
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {TTS_PRESETS.map((preset) => (
+                          <button
+                            key={preset.label}
+                            type="button"
+                            onClick={() => setTtsText(preset.text)}
+                            className="px-3 py-1.5 rounded-lg text-xs bg-[#0B2B26] border border-[#8EB69B]/25 text-[#DAF1DE] hover:border-[#DAF1DE] transition-colors whitespace-nowrap shrink-0"
+                          >
+                            {preset.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <textarea
+                      id="tts-briefing-text"
+                      rows={5}
+                      value={ttsText}
+                      onChange={(e) => setTtsText(e.target.value)}
+                      placeholder="Enter institutional commentary or educational script to convert to speech..."
+                      className="w-full rounded-xl bg-[#0B2B26] border border-[#8EB69B]/30 p-4 text-sm text-[#DAF1DE] leading-relaxed focus-visible:outline-2 focus-visible:outline-[#DAF1DE]"
+                    />
+                  </div>
+
+                  <div className="lg:col-span-4 flex flex-col justify-between space-y-6 rounded-2xl bg-[#0B2B26] border border-[#8EB69B]/20 p-6">
+                    <div>
+                      <label
+                        htmlFor="tts-voice-select"
+                        className="block text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-2"
+                      >
+                        Voice Persona
+                      </label>
+                      <select
+                        id="tts-voice-select"
+                        value={ttsVoice}
+                        onChange={(e) => setTtsVoice(e.target.value)}
+                        className="w-full rounded-xl bg-[#051F20] border border-[#8EB69B]/30 px-3.5 py-2.5 text-sm text-[#DAF1DE] focus-visible:outline-2 focus-visible:outline-[#DAF1DE]"
+                      >
+                        <option value="Charon">Charon — Composed Executive</option>
+                        <option value="Kore">Kore — Clear Editorial</option>
+                        <option value="Fenrir">Fenrir — Deep Institutional</option>
+                        <option value="Zephyr">Zephyr — Warm Conversational</option>
+                        <option value="Puck">Puck — Crisp Presenter</option>
+                      </select>
+                      <p className="mt-3 text-xs text-[#8EB69B] leading-relaxed">
+                        Synthesizes high-fidelity 24kHz WAV audio using Gemini 3.8 Flash TTS for
+                        accessible investor briefings.
+                      </p>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={ttsLoading || !ttsText.trim()}
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#DAF1DE] text-[#051F20] text-xs font-semibold uppercase tracking-wider hover:bg-[#FFFFFF] transition-colors disabled:opacity-50"
+                    >
+                      {ttsLoading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Synthesizing Audio...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Volume2 className="w-4 h-4" />
+                          <span>Generate Audio Briefing</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
 
-                {chatError && (
+                {ttsError && (
                   <div
                     role="alert"
-                    className="mx-6 mb-3 px-4 py-2.5 bg-[#103B2F] border border-[#C6A96B]/60 text-xs text-[#F4F0E5]"
+                    className="p-4 rounded-xl bg-[#163832] border border-[#8EB69B]/50 text-xs text-[#DAF1DE]"
                   >
-                    {chatError}
+                    {ttsError}
                   </div>
                 )}
 
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSendChat();
-                  }}
-                  className="p-4 sm:p-6 border-t border-[#C6A96B]/20 flex items-center gap-3 bg-[#102D25]"
-                >
-                  <input
-                    type="text"
-                    value={chatInput}
-                    onChange={(e) => setChatInput(e.target.value)}
-                    placeholder="Ask about Shariah screening, global markets, or Islamic finance..."
-                    className="flex-1 bg-[#103B2F] border border-[#C6A96B]/30 px-4 py-3 text-sm text-[#FFFFFF] placeholder:text-[#E8EBE7]/50 focus-visible:outline-2 focus-visible:outline-[#C6A96B]"
-                  />
-                  <button
-                    type="submit"
-                    disabled={chatLoading || !chatInput.trim()}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#C6A96B] text-[#102D25] text-xs font-semibold uppercase tracking-wider hover:bg-[#d6bc82] transition-colors disabled:opacity-50 whitespace-nowrap shrink-0"
-                  >
-                    <span>Send</span>
-                    <Send className="w-3.5 h-3.5" />
-                  </button>
-                </form>
-              </div>
-            </motion.div>
-          )}
-
-          {/* TAB 2: Executive Audio Briefing (gemini-3.8-flash-tts) */}
-          {activeTab === "tts" && (
-            <motion.form
-              key="tab-tts"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              onSubmit={handleSynthesizeBriefing}
-              className="p-6 sm:p-10 space-y-6"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div className="lg:col-span-8 space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <label
-                      htmlFor="tts-briefing-text"
-                      className="text-xs uppercase tracking-[0.18em] text-[#C6A96B]"
-                    >
-                      Briefing Script
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {TTS_PRESETS.map((preset) => (
-                        <button
-                          key={preset.label}
-                          type="button"
-                          onClick={() => setTtsText(preset.text)}
-                          className="px-3 py-1.5 text-xs bg-[#103B2F] border border-[#C6A96B]/30 text-[#F4F0E5] hover:border-[#C6A96B] transition-colors whitespace-nowrap shrink-0"
-                        >
-                          {preset.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <textarea
-                    id="tts-briefing-text"
-                    rows={5}
-                    value={ttsText}
-                    onChange={(e) => setTtsText(e.target.value)}
-                    placeholder="Enter institutional commentary or educational script to convert to speech..."
-                    className="w-full bg-[#103B2F] border border-[#C6A96B]/30 p-4 text-sm text-[#FFFFFF] leading-relaxed focus-visible:outline-2 focus-visible:outline-[#C6A96B]"
-                  />
-                </div>
-
-                <div className="lg:col-span-4 flex flex-col justify-between space-y-6 bg-[#103B2F]/60 border border-[#C6A96B]/20 p-6">
-                  <div>
-                    <label
-                      htmlFor="tts-voice-select"
-                      className="block text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-2"
-                    >
-                      Voice Persona
-                    </label>
-                    <select
-                      id="tts-voice-select"
-                      value={ttsVoice}
-                      onChange={(e) => setTtsVoice(e.target.value)}
-                      className="w-full bg-[#102D25] border border-[#C6A96B]/30 px-3.5 py-2.5 text-sm text-[#F4F0E5] focus-visible:outline-2 focus-visible:outline-[#C6A96B]"
-                    >
-                      <option value="Charon">Charon — Composed Executive</option>
-                      <option value="Kore">Kore — Clear Editorial</option>
-                      <option value="Fenrir">Fenrir — Deep Institutional</option>
-                      <option value="Zephyr">Zephyr — Warm Conversational</option>
-                      <option value="Puck">Puck — Crisp Presenter</option>
-                    </select>
-                    <p className="mt-3 text-xs text-[#E8EBE7]/70 leading-relaxed">
-                      Synthesizes high-fidelity 24kHz WAV audio using Gemini 3.8 Flash TTS for
-                      accessible investor briefings.
-                    </p>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={ttsLoading || !ttsText.trim()}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#C6A96B] text-[#102D25] text-xs font-semibold uppercase tracking-wider hover:bg-[#d6bc82] transition-colors disabled:opacity-50"
-                  >
-                    {ttsLoading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Synthesizing Audio...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Volume2 className="w-4 h-4" />
-                        <span>Generate Audio Briefing</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {ttsError && (
-                <div
-                  role="alert"
-                  className="p-4 bg-[#103B2F] border border-[#C6A96B]/60 text-xs text-[#F4F0E5]"
-                >
-                  {ttsError}
-                </div>
-              )}
-
-              {ttsAudioUrl && (
-                <div className="p-5 bg-[#103B2F] border border-[#C6A96B]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <span className="text-xs uppercase tracking-[0.18em] text-[#C6A96B]">
-                    Ready for Playback
-                  </span>
-                  <audio controls src={ttsAudioUrl} className="w-full sm:max-w-md" />
-                </div>
-              )}
-            </motion.form>
-          )}
-
-          {/* TAB 3: High-Quality Image Studio (gemini-3-pro-image-preview with 1K / 2K / 4K) */}
-          {activeTab === "image" && (
-            <motion.form
-              key="tab-image"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              onSubmit={handleGenerateImage}
-              className="p-6 sm:p-10 space-y-8"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div className="lg:col-span-5 space-y-6">
-                  <div>
-                    <label
-                      htmlFor="image-concept-prompt"
-                      className="block text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-2"
-                    >
-                      Editorial Visual Concept
-                    </label>
-                    <textarea
-                      id="image-concept-prompt"
-                      rows={4}
-                      value={imgPrompt}
-                      onChange={(e) => setImgPrompt(e.target.value)}
-                      placeholder="Describe an architectural or editorial Islamic finance visual concept..."
-                      className="w-full bg-[#103B2F] border border-[#C6A96B]/30 p-4 text-sm text-[#FFFFFF] leading-relaxed focus-visible:outline-2 focus-visible:outline-[#C6A96B]"
-                    />
-                    <div className="mt-2.5 flex flex-wrap gap-2">
-                      {IMAGE_PRESETS.map((preset, i) => (
-                        <button
-                          key={preset}
-                          type="button"
-                          onClick={() => setImgPrompt(preset)}
-                          className="text-xs text-[#C6A96B] hover:text-[#FFFFFF] underline underline-offset-4 transition-colors"
-                        >
-                          Concept {i + 1}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Image Size Affordance: 1K, 2K, 4K */}
-                  <div>
-                    <span className="block text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-2.5">
-                      Output Resolution
+                {ttsAudioUrl && (
+                  <div className="p-5 rounded-xl bg-[#0B2B26] border border-[#8EB69B]/35 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span className="text-xs uppercase tracking-[0.18em] text-[#8EB69B]">
+                      Ready for Playback
                     </span>
-                    <div className="grid grid-cols-3 gap-2">
-                      {(["1K", "2K", "4K"] as ImageSize[]).map((size) => (
-                        <button
-                          key={size}
-                          type="button"
-                          onClick={() => setImageSize(size)}
-                          className={`py-2.5 text-xs font-mono font-semibold border transition-colors ${
-                            imageSize === size
-                              ? "bg-[#C6A96B] border-[#C6A96B] text-[#102D25]"
-                              : "bg-[#103B2F] border-[#C6A96B]/30 text-[#F4F0E5] hover:border-[#C6A96B]"
-                          }`}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
+                    <audio controls src={ttsAudioUrl} className="w-full sm:max-w-md" />
                   </div>
+                )}
+              </motion.form>
+            )}
 
-                  {/* Aspect Ratio Selector */}
-                  <div>
-                    <span className="block text-xs uppercase tracking-[0.18em] text-[#C6A96B] mb-2.5">
-                      Aspect Ratio
-                    </span>
-                    <div className="grid grid-cols-4 gap-2">
-                      {(["16:9", "4:3", "1:1", "3:4"] as ImageRatio[]).map((ratio) => (
-                        <button
-                          key={ratio}
-                          type="button"
-                          onClick={() => setAspectRatio(ratio)}
-                          className={`py-2 text-xs font-mono border transition-colors ${
-                            aspectRatio === ratio
-                              ? "bg-[#C6A96B] border-[#C6A96B] text-[#102D25] font-semibold"
-                              : "bg-[#103B2F] border-[#C6A96B]/30 text-[#F4F0E5] hover:border-[#C6A96B]"
-                          }`}
-                        >
-                          {ratio}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={imgLoading || !imgPrompt.trim()}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#C6A96B] text-[#102D25] text-xs font-semibold uppercase tracking-wider hover:bg-[#d6bc82] transition-colors disabled:opacity-50"
-                  >
-                    {imgLoading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Rendering {imageSize} Concept...</span>
-                      </>
-                    ) : (
-                      <>
-                        <ImageIcon className="w-4 h-4" />
-                        <span>Generate {imageSize} Visual</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                {/* Output Canvas */}
-                <div className="lg:col-span-7 bg-[#103B2F]/50 border border-[#C6A96B]/25 p-6 flex flex-col justify-center items-center min-h-[340px]">
-                  {imgGenError ? (
-                    <div role="alert" className="max-w-md text-center space-y-2">
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#C6A96B]">
-                        Visual Studio Notice
-                      </p>
-                      <p className="text-sm text-[#F4F0E5]/90 leading-relaxed">{imgGenError}</p>
-                    </div>
-                  ) : generatedImageUrl ? (
-                    <div className="w-full space-y-4">
-                      <img
-                        src={generatedImageUrl}
-                        alt={imgPrompt}
-                        referrerPolicy="no-referrer"
-                        className="w-full max-h-[420px] object-contain border border-[#C6A96B]/30"
+            {/* TAB 3: High-Quality Image Studio (gemini-3-pro-image-preview with 1K / 2K / 4K) */}
+            {activeTab === "image" && (
+              <motion.form
+                key="tab-image"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                onSubmit={handleGenerateImage}
+                className="p-6 sm:p-10 space-y-8"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  <div className="lg:col-span-5 space-y-6">
+                    <div>
+                      <label
+                        htmlFor="image-concept-prompt"
+                        className="block text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-2"
+                      >
+                        Editorial Visual Concept
+                      </label>
+                      <textarea
+                        id="image-concept-prompt"
+                        rows={4}
+                        value={imgPrompt}
+                        onChange={(e) => setImgPrompt(e.target.value)}
+                        placeholder="Describe an architectural or editorial Islamic finance visual concept..."
+                        className="w-full rounded-xl bg-[#0B2B26] border border-[#8EB69B]/30 p-4 text-sm text-[#DAF1DE] leading-relaxed focus-visible:outline-2 focus-visible:outline-[#DAF1DE]"
                       />
-                      <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#E8EBE7]/80">
-                        <span>
-                          Resolution: {imageSize} · Aspect: {aspectRatio}
-                        </span>
-                        <a
-                          href={generatedImageUrl}
-                          download={`quwarir-concept-${imageSize.toLowerCase()}.png`}
-                          className="inline-flex items-center gap-1.5 text-[#C6A96B] hover:text-[#FFFFFF] transition-colors uppercase tracking-wider font-semibold"
-                        >
-                          <Download className="w-3.5 h-3.5" />
-                          <span>Download</span>
-                        </a>
+                      <div className="mt-2.5 flex flex-wrap gap-3">
+                        {IMAGE_PRESETS.map((preset, i) => (
+                          <button
+                            key={preset}
+                            type="button"
+                            onClick={() => setImgPrompt(preset)}
+                            className="text-xs text-[#8EB69B] hover:text-[#DAF1DE] underline underline-offset-4 transition-colors"
+                          >
+                            Concept {i + 1}
+                          </button>
+                        ))}
                       </div>
-                      {generatedCaption && (
-                        <p className="text-xs text-[#E8EBE7]/75 leading-relaxed">
-                          {generatedCaption}
-                        </p>
+                    </div>
+
+                    <div>
+                      <span className="block text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-2.5">
+                        Output Resolution
+                      </span>
+                      <div className="grid grid-cols-3 gap-2">
+                        {(["1K", "2K", "4K"] as ImageSize[]).map((size) => (
+                          <button
+                            key={size}
+                            type="button"
+                            onClick={() => setImageSize(size)}
+                            className={`py-2.5 rounded-xl text-xs font-mono font-semibold border transition-colors ${
+                              imageSize === size
+                                ? "bg-[#DAF1DE] border-[#DAF1DE] text-[#051F20]"
+                                : "bg-[#0B2B26] border-[#8EB69B]/25 text-[#DAF1DE] hover:border-[#DAF1DE]"
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="block text-xs uppercase tracking-[0.18em] text-[#8EB69B] mb-2.5">
+                        Aspect Ratio
+                      </span>
+                      <div className="grid grid-cols-4 gap-2">
+                        {(["16:9", "4:3", "1:1", "3:4"] as ImageRatio[]).map((ratio) => (
+                          <button
+                            key={ratio}
+                            type="button"
+                            onClick={() => setAspectRatio(ratio)}
+                            className={`py-2 rounded-xl text-xs font-mono border transition-colors ${
+                              aspectRatio === ratio
+                                ? "bg-[#DAF1DE] border-[#DAF1DE] text-[#051F20] font-semibold"
+                                : "bg-[#0B2B26] border-[#8EB69B]/25 text-[#DAF1DE] hover:border-[#DAF1DE]"
+                            }`}
+                          >
+                            {ratio}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={imgLoading || !imgPrompt.trim()}
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#DAF1DE] text-[#051F20] text-xs font-semibold uppercase tracking-wider hover:bg-[#FFFFFF] transition-colors disabled:opacity-50"
+                    >
+                      {imgLoading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Rendering {imageSize} Concept...</span>
+                        </>
+                      ) : (
+                        <>
+                          <ImageIcon className="w-4 h-4" />
+                          <span>Generate {imageSize} Visual</span>
+                        </>
                       )}
-                    </div>
-                  ) : (
-                    <div className="text-center max-w-sm space-y-2">
-                      <p className="font-serif text-2xl text-[#F4F0E5]">
-                        Editorial Brand Canvas
-                      </p>
-                      <p className="text-xs text-[#E8EBE7]/70 leading-relaxed">
-                        Choose a target resolution (1K, 2K, or 4K) and aspect ratio to render bespoke
-                        QUWARIR architectural imagery via Gemini 3 Pro Image Preview.
-                      </p>
-                    </div>
-                  )}
+                    </button>
+                  </div>
+
+                  <div className="lg:col-span-7 rounded-2xl bg-[#0B2B26]/70 border border-[#8EB69B]/20 p-6 flex flex-col justify-center items-center min-h-[340px]">
+                    {imgGenError ? (
+                      <div role="alert" className="max-w-md text-center space-y-2">
+                        <p className="text-xs uppercase tracking-[0.18em] text-[#8EB69B]">
+                          Visual Studio Notice
+                        </p>
+                        <p className="text-sm text-[#DAF1DE]/90 leading-relaxed">{imgGenError}</p>
+                      </div>
+                    ) : generatedImageUrl ? (
+                      <div className="w-full space-y-4">
+                        <img
+                          src={generatedImageUrl}
+                          alt={imgPrompt}
+                          referrerPolicy="no-referrer"
+                          className="w-full max-h-[420px] rounded-xl object-contain border border-[#8EB69B]/30"
+                        />
+                        <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#8EB69B]">
+                          <span>
+                            Resolution: {imageSize} · Aspect: {aspectRatio}
+                          </span>
+                          <a
+                            href={generatedImageUrl}
+                            download={`quwarir-concept-${imageSize.toLowerCase()}.png`}
+                            className="inline-flex items-center gap-1.5 text-[#DAF1DE] hover:text-[#8EB69B] transition-colors uppercase tracking-wider font-semibold"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                            <span>Download</span>
+                          </a>
+                        </div>
+                        {generatedCaption && (
+                          <p className="text-xs text-[#8EB69B] leading-relaxed">
+                            {generatedCaption}
+                          </p>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-center max-w-sm space-y-2">
+                        <p className="font-serif text-2xl text-[#DAF1DE]">
+                          Editorial Brand Canvas
+                        </p>
+                        <p className="text-xs text-[#8EB69B] leading-relaxed">
+                          Choose a target resolution (1K, 2K, or 4K) and aspect ratio to render
+                          bespoke QUWARIR architectural imagery via Gemini 3 Pro Image Preview.
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.form>
-          )}
+              </motion.form>
+            )}
           </AnimatePresence>
         </div>
       </div>
