@@ -1,0 +1,6 @@
+{
+  "name": "QUWARIR — Global Islamic Financial Technology",
+  "description": "Invest Globally. Invest Ethically. A financial technology company dedicated to making global Shariah-compliant investing more accessible, transparent, and convenient.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
