@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { KhatamRosette } from "./IslamicOrnaments";
 
 type RegionKey = "saudi" | "us" | "global";
 
@@ -68,10 +69,14 @@ export function MarketsSection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14"
         >
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-4 mb-5">
-              <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+            <div className="flex items-center gap-3 mb-5">
+              <KhatamRosette className="w-4 h-4 text-[#8EB69B]" />
               <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#8EB69B]">
                 Global Markets
+              </span>
+              <span aria-hidden="true" className="text-[#8EB69B]/60">·</span>
+              <span lang="ar" dir="rtl" className="text-sm text-[#DAF1DE]/80">
+                الأسواق العالمية
               </span>
             </div>
             <h2 className="font-serif text-[clamp(2.25rem,4vw,3.5rem)] font-medium leading-[1.08] text-[#DAF1DE] text-balance">

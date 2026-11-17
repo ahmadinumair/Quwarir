@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { QuwarirMark } from "./QuwarirLogo";
+import { IslamicStarLatticeBg, KhatamRosette } from "./IslamicOrnaments";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,6 +95,9 @@ export function ArchitecturalInterlude() {
       aria-label="QUWARIR Architectural Manifesto"
       className="relative bg-[#0B2B26] text-[#DAF1DE] py-20 lg:py-28 border-b border-[#8EB69B]/15 overflow-hidden"
     >
+      {/* Subtle carved Islamic Girih lattice */}
+      <IslamicStarLatticeBg opacity={0.055} strokeColor="#8EB69B" />
+
       {/* Continuous 4-Column Architectural Hairline Grid */}
       <div
         aria-hidden="true"
@@ -108,32 +112,53 @@ export function ArchitecturalInterlude() {
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center">
           <p className="font-serif italic text-sm sm:text-base text-[#8EB69B] mb-10">
-            (The Principle of Purposeful Capital)
+            (Amanah &amp; Maqasid — The Principle of Purposeful Islamic Capital)
           </p>
 
-          {/* Split Monumental Statement + Clean Centered Hexagonal QUWARIR Emblem */}
+          {/* Split Monumental Statement + Clean Centered Rub el Hizb & Hexagonal QUWARIR Seal (no circling text) */}
           <div className="relative w-full py-6 lg:py-12 flex flex-col items-center justify-center">
-            {/* Clean Concentric Geometric Frame & Centered Seal (no circling text) */}
-            <div className="relative w-44 h-44 sm:w-48 sm:h-48 flex items-center justify-center mb-10 lg:mb-0 lg:absolute lg:inset-0 lg:m-auto pointer-events-none">
+            <div className="relative w-52 h-52 sm:w-56 sm:h-56 flex items-center justify-center mb-10 lg:mb-0 lg:absolute lg:inset-0 lg:m-auto pointer-events-none">
               <svg
                 ref={ringsRef}
                 viewBox="0 0 240 240"
-                className="w-full h-full opacity-45"
+                className="w-full h-full opacity-60"
                 aria-hidden="true"
               >
                 <circle
                   cx="120"
                   cy="120"
-                  r="112"
+                  r="114"
                   fill="none"
                   stroke="#8EB69B"
                   strokeWidth="0.75"
                   strokeDasharray="3 8"
                 />
+                {/* Classic Rub el Hizb 8-pointed star framing the seal */}
+                <rect
+                  x="42"
+                  y="42"
+                  width="156"
+                  height="156"
+                  fill="none"
+                  stroke="#8EB69B"
+                  strokeWidth="0.95"
+                  strokeOpacity="0.65"
+                />
+                <rect
+                  x="42"
+                  y="42"
+                  width="156"
+                  height="156"
+                  transform="rotate(45 120 120)"
+                  fill="none"
+                  stroke="#DAF1DE"
+                  strokeWidth="0.95"
+                  strokeOpacity="0.5"
+                />
                 <circle
                   cx="120"
                   cy="120"
-                  r="90"
+                  r="86"
                   fill="none"
                   stroke="#DAF1DE"
                   strokeWidth="0.6"
@@ -144,16 +169,16 @@ export function ArchitecturalInterlude() {
               {/* Inner Rotating Emerald Hexagonal Q Seal */}
               <div
                 ref={sealRef}
-                className="absolute w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#163832] border border-[#8EB69B]/55 flex items-center justify-center shadow-xl"
+                className="absolute w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#163832] border border-[#8EB69B]/60 flex items-center justify-center shadow-xl"
               >
-                <div className="w-22 h-22 sm:w-24 sm:h-24 rounded-full border border-[#DAF1DE]/25 flex items-center justify-center">
+                <div className="w-22 h-22 sm:w-24 sm:h-24 rounded-full border border-[#DAF1DE]/30 flex items-center justify-center">
                   <QuwarirMark className="w-11 h-11" variant="mint-on-dark" />
                 </div>
               </div>
             </div>
 
             {/* Split Converging Typography */}
-            <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-60 items-center">
+            <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-64 items-center">
               <div ref={leftTextRef} className="lg:text-right">
                 <p className="font-serif text-[clamp(1.85rem,3.2vw,3rem)] leading-[1.08] tracking-tight text-[#DAF1DE]">
                   CAPITAL IS NOT ONLY
@@ -171,10 +196,12 @@ export function ArchitecturalInterlude() {
             </div>
           </div>
 
-          <div className="mt-10 lg:mt-16 flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-[0.22em] text-[#8EB69B]">
+          <div className="mt-10 lg:mt-16 flex flex-wrap items-center justify-center gap-5 text-xs uppercase tracking-[0.22em] text-[#8EB69B]">
             <span>Invest Globally</span>
-            <span aria-hidden="true" className="text-[#DAF1DE]">·</span>
+            <KhatamRosette className="w-3.5 h-3.5 text-[#DAF1DE]" />
             <span>Invest Ethically</span>
+            <KhatamRosette className="w-3.5 h-3.5 text-[#DAF1DE]" />
+            <span>Shariah Integrity</span>
           </div>
         </div>
       </div>

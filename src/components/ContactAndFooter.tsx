@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { QuwarirLockup } from "./QuwarirLogo";
 import { ArrowRight, CheckCircle2, Globe, Mail, Building2 } from "lucide-react";
+import { KhatamRosette, MashrabiyaBandBorder } from "./IslamicOrnaments";
 
 const GRID_TILE_COUNT = 36;
 
@@ -61,9 +62,9 @@ export function ContactAndFooter() {
         id="contact"
         className="relative bg-[#163832] text-[#DAF1DE] py-24 lg:py-32 border-b border-[#8EB69B]/20 overflow-hidden"
       >
-        {/* Interactive Architectural Tile Grid Showcase */}
+        {/* Interactive Mashrabiya Geometric Tile Grid Showcase */}
         <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12 mb-16">
-          <div className="relative rounded-2xl border border-[#8EB69B]/25 bg-[#0B2B26]/70 overflow-hidden py-14 sm:py-20 px-6">
+          <div className="relative rounded-2xl border border-[#8EB69B]/25 bg-[#0B2B26]/80 overflow-hidden py-14 sm:py-20 px-6">
             <div
               onMouseLeave={() => setHoveredTile(null)}
               className="absolute inset-0 grid grid-cols-6 sm:grid-cols-12 grid-rows-3"
@@ -77,17 +78,24 @@ export function ContactAndFooter() {
                   <div
                     key={i}
                     onMouseEnter={() => setHoveredTile(i)}
-                    className={`border-r border-b border-[#8EB69B]/10 transition-colors duration-300 ${
+                    className={`relative flex items-center justify-center border-r border-b border-[#8EB69B]/12 transition-colors duration-300 ${
                       isLit ? "bg-[#8EB69B]/20" : "bg-transparent"
                     }`}
-                  />
+                  >
+                    <KhatamRosette
+                      className={`w-6 h-6 transition-opacity duration-300 ${
+                        isLit ? "text-[#DAF1DE] opacity-55" : "text-[#8EB69B] opacity-15"
+                      }`}
+                      filledCenter={false}
+                    />
+                  </div>
                 );
               })}
             </div>
 
             <div className="relative z-10 max-w-xl mx-auto text-center pointer-events-none">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[#8EB69B] mb-5">
-                Direct Corporate Correspondence
+                Direct Corporate Correspondence · التواصل المؤسسي
               </p>
               <a
                 href="mailto:inquiries@quwarir-fintech.example"
@@ -107,8 +115,8 @@ export function ContactAndFooter() {
             {/* Company Contact Information */}
             <div data-gsap-reveal="headline" className="lg:col-span-5 space-y-8">
               <div>
-                <div className="flex items-center gap-4 mb-5">
-                  <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+                <div className="flex items-center gap-3 mb-5">
+                  <KhatamRosette className="w-4 h-4 text-[#8EB69B]" />
                   <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#8EB69B]">
                     Contact QUWARIR
                   </span>
@@ -117,8 +125,8 @@ export function ContactAndFooter() {
                   Begin a Dialogue With Our Team.
                 </h2>
                 <p className="text-base text-[#DAF1DE]/80 leading-relaxed">
-                  Reach out for institutional inquiries, research collaboration, media requests, or
-                  general corporate information about QUWARIR.
+                  Assalamu Alaikum. Reach out for institutional inquiries, Shariah research
+                  collaboration, media requests, or general corporate information about QUWARIR.
                 </p>
               </div>
 
@@ -341,15 +349,22 @@ export function ContactAndFooter() {
       </section>
 
       {/* SECTION 09 — FOOTER */}
-      <footer className="bg-[#051F20] text-[#DAF1DE] pt-20 pb-12">
+      <footer className="bg-[#051F20] text-[#DAF1DE] pb-12">
+        <MashrabiyaBandBorder className="mb-16" strokeColor="#8EB69B" />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#8EB69B]/20">
             {/* Brand Summary */}
             <div className="md:col-span-5 space-y-5">
               <QuwarirLockup variant="light" markSize="w-9 h-9" />
-              <p className="text-xs uppercase tracking-[0.22em] text-[#8EB69B] pt-1">
-                Invest Globally. Invest Ethically.
-              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <p className="text-xs uppercase tracking-[0.22em] text-[#8EB69B]">
+                  Invest Globally. Invest Ethically.
+                </p>
+                <span aria-hidden="true" className="text-[#8EB69B]/50">·</span>
+                <p lang="ar" dir="rtl" className="text-sm text-[#DAF1DE]/80">
+                  استثمر عالمياً، استثمر بأخلاقية
+                </p>
+              </div>
               <p className="text-sm text-[#DAF1DE]/75 leading-relaxed max-w-md">
                 QUWARIR is a financial technology company dedicated to making global
                 Shariah-compliant investing more accessible, transparent, and convenient through

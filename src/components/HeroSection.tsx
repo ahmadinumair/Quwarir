@@ -7,9 +7,14 @@ import {
   useTransform,
 } from "motion/react";
 import { ArrowRight, Volume2, Square, Loader2 } from "lucide-react";
+import {
+  IslamicStarLatticeBg,
+  KhatamRosette,
+  IslamicArchFrame,
+} from "./IslamicOrnaments";
 
 const HERO_BRIEFING_SCRIPT =
-  "Welcome to QUWARIR. Wealth with purpose—a new perspective on global investing. QUWARIR connects modern financial technology with timeless Islamic investment principles to make international markets more accessible, transparent, and ethical.";
+  "Assalamu Alaikum and welcome to QUWARIR. Wealth with purpose—a new perspective on global investing. QUWARIR connects modern financial technology with timeless Islamic investment principles to make international markets more accessible, transparent, and ethical.";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -103,46 +108,71 @@ export function HeroSection() {
       onPointerLeave={handlePointerLeave}
       className="relative bg-gradient-to-b from-[#051F20] via-[#0B2B26] to-[#0B2B26] text-[#DAF1DE] pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden border-b border-[#8EB69B]/15"
     >
-      {/* Atmospheric emerald radial glow inspired by Image 2 & Image 3 */}
+      {/* Subtle carved Islamic Girih 8-pointed star lattice */}
+      <IslamicStarLatticeBg opacity={0.07} strokeColor="#8EB69B" />
+
+      {/* Atmospheric emerald radial glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[520px] rounded-full bg-[#235347]/40 blur-3xl"
+        className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[520px] rounded-full bg-[#235347]/45 blur-3xl"
       />
 
-      {/* Subtle rotating geometric rings */}
+      {/* Rotating Islamic Astrolabe & Rub el Hizb sacred geometry behind central arch */}
       <motion.svg
         aria-hidden="true"
         viewBox="0 0 800 800"
         fill="none"
         style={prefersReducedMotion ? undefined : { x: ringX, y: ringY }}
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] opacity-20"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] opacity-25"
       >
-        <motion.circle
-          cx="400"
-          cy="400"
-          r="330"
-          stroke="#8EB69B"
-          strokeWidth="0.75"
-          strokeDasharray="5 12"
+        <motion.g
           animate={prefersReducedMotion ? undefined : { rotate: 360 }}
-          transition={{ duration: 95, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 110, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: "400px 400px" }}
-        />
+        >
+          <circle
+            cx="400"
+            cy="400"
+            r="340"
+            stroke="#8EB69B"
+            strokeWidth="0.75"
+            strokeDasharray="5 12"
+          />
+          <rect
+            x="160"
+            y="160"
+            width="480"
+            height="480"
+            stroke="#8EB69B"
+            strokeWidth="0.6"
+            strokeOpacity="0.45"
+          />
+          <rect
+            x="160"
+            y="160"
+            width="480"
+            height="480"
+            transform="rotate(45 400 400)"
+            stroke="#DAF1DE"
+            strokeWidth="0.6"
+            strokeOpacity="0.35"
+          />
+        </motion.g>
         <motion.circle
           cx="400"
           cy="400"
-          r="260"
+          r="250"
           stroke="#DAF1DE"
           strokeWidth="0.6"
-          strokeOpacity="0.45"
+          strokeOpacity="0.35"
           animate={prefersReducedMotion ? undefined : { rotate: -360 }}
-          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 75, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: "400px 400px" }}
         />
       </motion.svg>
 
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12">
-        {/* Top Monumental Display Typography spanning across Hero (inspired by Image 3) */}
+        {/* Top Monumental Display Typography */}
         <div className="text-center max-w-5xl mx-auto mb-10 lg:mb-14">
           <motion.div
             initial={fadeInitial}
@@ -150,11 +180,15 @@ export function HeroSection() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="inline-flex items-center gap-3 mb-5"
           >
-            <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+            <KhatamRosette className="w-3.5 h-3.5 text-[#8EB69B]" />
             <span className="text-xs font-semibold tracking-[0.22em] uppercase text-[#8EB69B]">
               Global Islamic Finance
             </span>
-            <span className="w-8 h-px bg-[#8EB69B]" aria-hidden="true" />
+            <span aria-hidden="true" className="text-[#8EB69B]/60">·</span>
+            <span lang="ar" dir="rtl" className="text-sm font-medium text-[#DAF1DE]/85">
+              المالية الإسلامية العالمية
+            </span>
+            <KhatamRosette className="w-3.5 h-3.5 text-[#8EB69B]" />
           </motion.div>
 
           <div className="overflow-hidden">
@@ -169,9 +203,9 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* 3-Zone Composition below Monumental Headline: Left CTAs — Center Sculptural Visual — Right Editorial Copy */}
+        {/* 3-Zone Composition: Left CTAs — Center Pointed Islamic Arch Visual — Right Editorial Copy */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* LEFT: Stacked Rounded CTAs (inspired by Image 3) */}
+          {/* LEFT: Stacked Rounded CTAs */}
           <motion.div
             initial={fadeInitial}
             animate={fadeAnimate}
@@ -236,56 +270,55 @@ export function HeroSection() {
             )}
           </motion.div>
 
-          {/* CENTER: Overlapping Sculptural Globe with Mouse-Follow Parallax */}
+          {/* CENTER: Pointed Islamic Mihrab Arch Framing Sculptural Globe */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex justify-center order-1 lg:order-2"
           >
-            <div
-              data-gsap-parallax="-18"
-              className="relative w-full max-w-[400px] aspect-[4/5] rounded-[2rem] bg-[#051F20] border border-[#8EB69B]/30 overflow-hidden shadow-2xl"
-            >
-              {!imgError ? (
-                <motion.img
-                  src="/src/assets/images/hero_quwarir_globe_1794885509484.jpg"
-                  alt="Architectural globe resting on deep emerald marble symbolizing QUWARIR global Islamic financial connectivity"
-                  referrerPolicy="no-referrer"
-                  onError={() => setImgError(true)}
-                  style={
-                    prefersReducedMotion
-                      ? undefined
-                      : { x: imageX, y: imageY, scale: 1.06 }
-                  }
-                  className="w-full h-full object-cover object-center will-change-transform"
-                />
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center p-10 bg-gradient-to-b from-[#163832] to-[#051F20] text-center">
-                  <p className="font-serif text-2xl text-[#DAF1DE]">
-                    Invest Globally. Invest Ethically.
-                  </p>
-                </div>
-              )}
+            <div data-gsap-parallax="-18" className="w-full max-w-[400px] aspect-[4/5]">
+              <IslamicArchFrame className="w-full h-full shadow-2xl">
+                {!imgError ? (
+                  <motion.img
+                    src="/src/assets/images/hero_quwarir_globe_1794885509484.jpg"
+                    alt="Architectural globe resting on deep emerald marble inside a pointed Islamic arch symbolizing QUWARIR global Islamic financial connectivity"
+                    referrerPolicy="no-referrer"
+                    onError={() => setImgError(true)}
+                    style={
+                      prefersReducedMotion
+                        ? undefined
+                        : { x: imageX, y: imageY, scale: 1.06 }
+                    }
+                    className="w-full h-full object-cover object-center will-change-transform"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center p-10 bg-gradient-to-b from-[#163832] to-[#051F20] text-center">
+                    <p className="font-serif text-2xl text-[#DAF1DE]">
+                      Invest Globally. Invest Ethically.
+                    </p>
+                  </div>
+                )}
 
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#051F20]/90 via-[#051F20]/40 to-transparent"
-              />
-              <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-[#8EB69B] mb-1">
-                    Global Investment
-                  </p>
-                  <p className="font-serif text-lg text-[#DAF1DE]">
-                    Invest Globally. Invest Ethically.
-                  </p>
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#051F20]/95 via-[#051F20]/55 to-transparent"
+                />
+                <div className="absolute bottom-6 left-7 right-7 flex items-end justify-between">
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-[#8EB69B] mb-1">
+                      Maqasid · Global Investment
+                    </p>
+                    <p className="font-serif text-lg text-[#DAF1DE]">
+                      Invest Globally. Invest Ethically.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </IslamicArchFrame>
             </div>
           </motion.div>
 
-          {/* RIGHT: Editorial Intro & Highlights */}
+          {/* RIGHT: Editorial Intro & Islamic Principles Highlights */}
           <motion.div
             initial={fadeInitial}
             animate={fadeAnimate}
@@ -296,22 +329,24 @@ export function HeroSection() {
               A New Perspective on Global Investing.
             </p>
             <p className="text-sm sm:text-base text-[#DAF1DE]/85 leading-relaxed">
-              Discover a new perspective on global investing. QUWARIR connects financial technology
-              with Islamic investment principles to make global opportunities more accessible.
+              Guided by the principles of <span className="text-[#DAF1DE]">Amanah</span> (stewardship)
+              and <span className="text-[#DAF1DE]">Shariah</span> governance, QUWARIR connects modern
+              financial technology with ethical global market access free of{" "}
+              <span className="italic">Riba</span> and excessive uncertainty.
             </p>
 
             <div className="pt-5 border-t border-[#8EB69B]/25 grid grid-cols-3 gap-4 text-xs">
               <div>
                 <p className="font-mono text-[#8EB69B] mb-1 tabular-nums">01</p>
-                <p className="font-semibold text-[#DAF1DE]">Global Markets</p>
+                <p className="font-semibold text-[#DAF1DE]">Shariah Governed</p>
               </div>
               <div>
                 <p className="font-mono text-[#8EB69B] mb-1 tabular-nums">02</p>
-                <p className="font-semibold text-[#DAF1DE]">Shariah Principles</p>
+                <p className="font-semibold text-[#DAF1DE]">Halal Screening</p>
               </div>
               <div>
                 <p className="font-mono text-[#8EB69B] mb-1 tabular-nums">03</p>
-                <p className="font-semibold text-[#DAF1DE]">Financial Tech</p>
+                <p className="font-semibold text-[#DAF1DE]">Global Access</p>
               </div>
             </div>
           </motion.div>
