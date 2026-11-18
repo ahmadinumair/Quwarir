@@ -12,9 +12,13 @@ const PORT = Number(process.env.PORT) || 3000;
 const isProduction = process.env.NODE_ENV === "production";
 
 function getGeminiClient(): GoogleGenAI {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY?.trim();
   if (!apiKey) {
-    throw new Error("GEMINI_API_KEY is not configured in the server environment.");
+    const err = new Error(
+      "GEMINI_API_KEY is not configured. Add your Gemini API key in Settings > Secrets."
+    ) as Error & { status?: number };
+    err.status = 503;
+    throw err;
   }
   return new GoogleGenAI({
     apiKey,
@@ -67,6 +71,26 @@ const ALLOWED_CHAT_MODELS = new Set([
 async function startServer() {
   const app = express();
   app.use(express.json({ limit: "4mb" }));
+  app.use(
+    (
+      err: unknown,
+      _req: express.Request,
+      res: express.Response,
+      next: express.NextFunction
+    ) => {
+      if (err instanceof SyntaxError && "body" in err) {
+        return res.status(400).json({ error: "Invalid JSON request body." });
+      }
+      return next(err);
+    }
+  );
+
+  app.get("/api/health", (_req, res) => {
+    res.json({
+      status: "ok",
+      environment: isProduction ? "production" : "development",
+    });
+  });
 
   // Multi-turn Gemini chat endpoint
   app.post("/api/chat", async (req, res) => {
@@ -236,7 +260,7 @@ async function startServer() {
         contents: {
           parts: [
             {
-              text: `${prompt.trim()}. Minimalist luxury institutional financial aesthetic, deep emerald green (#103B2F) and brushed champagne gold (#C6A96B) palette, architectural precision, editorial photography.`,
+              text: `${prompt.trim()}. Minimalist luxury Islamic institutional financial aesthetic, obsidian emerald (#051F20), deep forest (#235347), sage mist (#8EB69B), and mint cream (#DAF1DE) palette, subtle Islamic architectural geometry, editorial photography.`,
             },
           ],
         },
@@ -309,6 +333,10 @@ async function startServer() {
         topic: topic?.trim() || "General Inquiry",
       },
     });
+  });
+
+  app.all("/api/*", (_req, res) => {
+    res.status(404).json({ error: "API endpoint not found." });
   });
 
   if (!isProduction) {

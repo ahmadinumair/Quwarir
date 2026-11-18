@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   motion,
   useReducedMotion,
@@ -12,6 +12,7 @@ import {
   KhatamRosette,
   IslamicArchFrame,
 } from "./IslamicOrnaments";
+import { safeParseJson } from "../utils/safeFetchJson";
 
 const HERO_BRIEFING_SCRIPT =
   "Assalamu Alaikum and welcome to QUWARIR. Wealth with purpose—a new perspective on global investing. QUWARIR connects modern financial technology with timeless Islamic investment principles to make international markets more accessible, transparent, and ethical.";
@@ -24,6 +25,16 @@ export function HeroSection() {
   const [audioError, setAudioError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -59,6 +70,11 @@ export function HeroSection() {
       return;
     }
 
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+
     setAudioLoading(true);
     setAudioError(null);
     try {
@@ -71,8 +87,8 @@ export function HeroSection() {
           voiceName: "Charon",
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await safeParseJson<{ audioBase64?: string; mimeType?: string }>(res);
+      if (!res.ok || !data.audioBase64) {
         throw new Error(data.error || "Unable to synthesize audio briefing.");
       }
       const audioUrl = `data:${data.mimeType || "audio/wav"};base64,${data.audioBase64}`;

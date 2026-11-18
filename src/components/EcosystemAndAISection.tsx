@@ -11,6 +11,7 @@ import {
   Download,
 } from "lucide-react";
 import { KhatamRosette } from "./IslamicOrnaments";
+import { safeParseJson } from "../utils/safeFetchJson";
 
 type WorkspaceTab = "chat" | "tts" | "image";
 type ChatRole = "shariah_methodology" | "market_analyst" | "islamic_educator";
@@ -116,6 +117,16 @@ export function EcosystemAndAISection() {
   const [imgGenError, setImgGenError] = useState<string | null>(null);
 
   useEffect(() => {
+    return () => {
+      if (inlineAudioRef.current) {
+        inlineAudioRef.current.pause();
+        inlineAudioRef.current.src = "";
+        inlineAudioRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     if (chatScrollRef.current) {
       chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
     }
@@ -153,8 +164,8 @@ export function EcosystemAndAISection() {
         }),
       });
 
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await safeParseJson<{ reply?: string; model?: string }>(res);
+      if (!res.ok || !data.reply) {
         throw new Error(data.error || "Unable to reach the QUWARIR Research Assistant.");
       }
 
@@ -163,7 +174,7 @@ export function EcosystemAndAISection() {
         {
           id: `model-${Date.now()}`,
           role: "model",
-          text: data.reply,
+          text: data.reply as string,
           modelUsed: data.model,
         },
       ]);
@@ -193,8 +204,8 @@ export function EcosystemAndAISection() {
           voiceName: ttsVoice,
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await safeParseJson<{ audioBase64?: string; mimeType?: string }>(res);
+      if (!res.ok || !data.audioBase64) {
         throw new Error(data.error || "Audio synthesis failed.");
       }
       const url = `data:${data.mimeType || "audio/wav"};base64,${data.audioBase64}`;
@@ -204,6 +215,7 @@ export function EcosystemAndAISection() {
       const audio = new Audio(url);
       inlineAudioRef.current = audio;
       audio.onended = () => setSpeakingMessageId(null);
+      audio.onerror = () => setSpeakingMessageId(null);
       await audio.play();
     } catch (err) {
       setSpeakingMessageId(null);
@@ -228,8 +240,8 @@ export function EcosystemAndAISection() {
           voiceName: ttsVoice,
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await safeParseJson<{ audioBase64?: string; mimeType?: string }>(res);
+      if (!res.ok || !data.audioBase64) {
         throw new Error(data.error || "Unable to synthesize speech.");
       }
       setTtsAudioUrl(`data:${data.mimeType || "audio/wav"};base64,${data.audioBase64}`);
@@ -256,8 +268,8 @@ export function EcosystemAndAISection() {
           aspectRatio,
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await safeParseJson<{ imageDataUrl?: string; caption?: string }>(res);
+      if (!res.ok || !data.imageDataUrl) {
         throw new Error(data.error || "Image generation failed.");
       }
       setGeneratedImageUrl(data.imageDataUrl);

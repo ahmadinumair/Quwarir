@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { QuwarirLockup } from "./QuwarirLogo";
 import { ArrowRight, CheckCircle2, Globe, Mail, Building2 } from "lucide-react";
 import { KhatamRosette, MashrabiyaBandBorder } from "./IslamicOrnaments";
+import { safeParseJson } from "../utils/safeFetchJson";
 
 const GRID_TILE_COUNT = 36;
 
@@ -39,8 +40,8 @@ export function ContactAndFooter() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, organization, topic, message }),
       });
-      const data = await res.json();
-      if (!res.ok) {
+      const data = await safeParseJson<{ referenceId?: string }>(res);
+      if (!res.ok || !data.referenceId) {
         throw new Error(data.error || "Unable to submit inquiry.");
       }
       setSubmittedRef(data.referenceId);
